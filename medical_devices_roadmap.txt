@@ -1,0 +1,33 @@
+# Title: Saudi Medical Devices Business Roadmap
+
+## Node 1: Legal Setup & Facility Licensing
+*   **Sub-node 1.1: Commercial Registration & Municipal Licensing**
+    *   Platform: Saudi Business Center (SBC) & Balady Platform
+    *   Action: Issue CR for Medical Devices Trading/Manufacturing. Obtain Municipal license for the office and warehouse, alongside a Civil Defense certificate via Salama Portal.
+*   **Sub-node 1.2: Appoint a Technical Manager**
+    *   Requirement: Must appoint a Saudi National as a Technical Manager (Director), usually with a background in biomedical engineering, pharmacy, or a related health field.
+
+## Node 2: Medical Device Establishment License (MDEL)
+*   **Description:** This is the license for the COMPANY/WAREHOUSE to legally handle medical devices.
+*   **Platform:** GHAD System (Saudi Food and Drug Authority - SFDA)
+*   **Sub-node 2.1: Quality Management System (QMS)**
+    *   Action: The facility must implement and obtain an ISO 13485 certificate (Quality Management System for Medical Devices).
+*   **Sub-node 2.2: MDEL Issuance**
+    *   Action: Submit CR, Balady license, Technical Manager credentials, and ISO 13485 to the GHAD system.
+    *   Fee & Validity: 4,000 SAR (Valid for 5 years).
+
+## Node 3: Authorized Representative (AR) License (For Importers ONLY)
+*   **Description:** If the company is importing devices, the foreign manufacturer MUST officially appoint the Saudi company as its Authorized Representative in the KSA.
+*   **Platform:** GHAD System (SFDA)
+*   **Action:** Execute an AR Agreement (Mandate) between the foreign manufacturer and the Saudi establishment. The agreement must be legalized (apostilled/attested) in the country of origin and uploaded to GHAD to obtain the AR License (AREL).
+
+## Node 4: Medical Device Marketing Authorization (MDMA)
+*   **Description:** This is the license for the PRODUCT/DEVICE itself. Without it, the device cannot enter the Saudi market or clear customs.
+*   **Platform:** GHAD System (SFDA)
+*   **Sub-node 4.1: Technical File Preparation**
+    *   Action: Compile the device's technical file, clinical evaluation reports, safety studies, and risk management documents.
+*   **Sub-node 4.2: Classification & Submission**
+    *   Action: Classify the device according to its risk level (Class I, IIa, IIb, III). Submit the dossier via GHAD.
+*   **Sub-node 4.3: Review & Issuance**
+    *   Timeline: SFDA review typically takes around 90 days depending on the device's risk class.
+    *   Validity: The MDMA certificate is valid for 3 years.

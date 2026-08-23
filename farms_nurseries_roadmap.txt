@@ -1,0 +1,30 @@
+# Title: Saudi Farms & Plant Nurseries Roadmap
+
+## Node 1: Land Possession & Agricultural Registry
+*   **Sub-node 1.1: Commercial Registration (Optional but Recommended for B2B)**
+    *   Platform: Saudi Business Center (SBC)
+    *   Action: Issue a CR for agricultural activities or nursery operations (Individuals can also operate with just a National ID, but a CR is required for corporate operations).
+*   **Sub-node 1.2: Issuing the Agricultural Record (السجل الزراعي)**
+    *   Platform: Naama Portal (Ministry of Environment, Water, and Agriculture - MEWA)
+    *   Action: Prove possession of the land to obtain the official Agricultural Record.
+    *   Requirements: National ID / CR, valid electronic Lease Contract (Ejar) or Title Deed (صك ملكية), and precise GIS coordinates (الإحداثيات) of the farm/nursery location.
+
+## Node 2: Technical Preparation & Testing
+*   **Sub-node 2.1: Topographical & Layout Planning**
+    *   Action: Prepare a detailed site plan (رسم كروكي) showing production areas, irrigation networks, and storage facilities.
+*   **Sub-node 2.2: Environmental & Safety Lab Tests**
+    *   Action: Conduct and obtain laboratory certificates proving the safety and suitability of Soil and Water. (Crucial for preventing the spread of agricultural diseases).
+
+## Node 3: Operational Nursery License (ترخيص مشتل زراعي)
+*   **Sub-node 3.1: License Application**
+    *   Platform: Naama Portal (MEWA)
+    *   Action: Apply for the operational license by uploading the layout plan, lab test results, and the Agricultural Record.
+*   **Sub-node 3.2: Operational Compliance & Conditions**
+    *   Requirement 1 (Resources): Must implement modern water-saving irrigation systems.
+    *   Requirement 2 (Labor): Workers must wear unified uniforms and maintain high personal and site hygiene standards.
+    *   Requirement 3 (Traceability): Every plant/batch must have a label clearly displaying the facility’s data (Name, CR/License No.) for traceability.
+
+## Node 4: Commercial Sales & Retail Front (Conditional)
+*   **Sub-node 4.1: Municipal Retail License**
+    *   Platform: Balady Platform
+    *   Action: If the nursery has a retail storefront selling directly to the public (B2C), a commercial activity license must be issued from the municipality for the sales area. (The agricultural production area itself is governed by MEWA).

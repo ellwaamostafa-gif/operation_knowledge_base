@@ -1,0 +1,664 @@
+<!-- LOCAL DEMO — not a production build. Uses CDN React 18 + Babel standalone + Tailwind Play CDN.
+     Double-click to run; no build step, no server. -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>دليل تأسيس الأنشطة التجارية في السعودية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<style>
+  html { direction: rtl; }
+  body { font-family: 'Tajawal', system-ui, -apple-system, 'Segoe UI', sans-serif; }
+</style>
+
+<div id="root"></div>
+
+<script type="text/plain" id="app-source">
+const { useState } = React;
+
+/* ---------- accent palette (static strings so Tailwind Play CDN picks them up) ---------- */
+const ACCENT = {
+  violet: { tint:'bg-violet-100 text-violet-600', head:'text-violet-700', line:'bg-violet-200', dot:'bg-violet-500', node:'bg-violet-600', badge:'bg-violet-100 text-violet-700', hover:'hover:border-violet-300' },
+  green:  { tint:'bg-green-100 text-green-600',   head:'text-green-700',  line:'bg-green-200',  dot:'bg-green-500',  node:'bg-green-600',  badge:'bg-green-100 text-green-700',  hover:'hover:border-green-300' },
+  teal:   { tint:'bg-teal-100 text-teal-600',     head:'text-teal-700',   line:'bg-teal-200',   dot:'bg-teal-500',   node:'bg-teal-600',   badge:'bg-teal-100 text-teal-700',    hover:'hover:border-teal-300' },
+  blue:   { tint:'bg-blue-100 text-blue-600',     head:'text-blue-700',   line:'bg-blue-200',   dot:'bg-blue-500',   node:'bg-blue-600',   badge:'bg-blue-100 text-blue-700',    hover:'hover:border-blue-300' },
+  amber:  { tint:'bg-amber-100 text-amber-600',   head:'text-amber-700',  line:'bg-amber-200',  dot:'bg-amber-500',  node:'bg-amber-600',  badge:'bg-amber-100 text-amber-700',  hover:'hover:border-amber-300' },
+  red:    { tint:'bg-red-100 text-red-600',       head:'text-red-700',    line:'bg-red-200',    dot:'bg-red-500',    node:'bg-red-600',    badge:'bg-red-100 text-red-700',      hover:'hover:border-red-300' },
+  stone:  { tint:'bg-stone-200 text-stone-600',   head:'text-stone-700',  line:'bg-stone-300',  dot:'bg-stone-500',  node:'bg-stone-700',  badge:'bg-stone-200 text-stone-700',  hover:'hover:border-stone-400' },
+  pink:   { tint:'bg-pink-100 text-pink-600',     head:'text-pink-700',   line:'bg-pink-200',   dot:'bg-pink-500',   node:'bg-pink-600',   badge:'bg-pink-100 text-pink-700',    hover:'hover:border-pink-300' },
+};
+
+/* ---------- inline lucide-style icons ---------- */
+const ICONS = {
+  GraduationCap: <g><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></g>,
+  Sprout: <g><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></g>,
+  Pill: <g><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></g>,
+  Ship: <g><path d="M12 10.189V14"/><path d="M12 2v3"/><path d="M19 13V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6"/><path d="M19.38 20A11.6 11.6 0 0 0 21 14l-8.188-3.639a2 2 0 0 0-1.624 0L3 14a11.6 11.6 0 0 0 2.81 7.76"/><path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></g>,
+  Building2: <g><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></g>,
+  Factory: <g><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></g>,
+  Warehouse: <g><path d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A2 2 0 0 1 3.26 6.5l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35Z"/><path d="M6 18h12"/><path d="M6 14h12"/><path d="M6 10h12"/></g>,
+  Stethoscope: <g><path d="M11 2v2"/><path d="M5 2v2"/><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"/><path d="M8 15a6 6 0 0 0 12 0v-3"/><circle cx="20" cy="10" r="2"/></g>,
+};
+
+function Icon({ name, className }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {ICONS[name]}
+    </svg>
+  );
+}
+
+/* ---------- data: mapped 1:1 from the 8 roadmap files ---------- */
+const ACTIVITIES = [
+  {
+    id: "training-centers",
+    titleAr: "مراكز التدريب",
+    descAr: "إنشاء مركز تدريب أهلي مرخّص من TVTC، من الموافقة المبدئية حتى اعتماد الدورات.",
+    icon: "GraduationCap", accent: "violet",
+    nodes: [
+      { title: "المرحلة ١: التخطيط والتأسيس القانوني الأولي", subnodes: [
+        { title: "تحديد الجهة التنظيمية",
+          action: "تحديد الجهة المشرفة بحسب نوع التدريب: الإداري والتقني والمهني: TVTC، والصحي والطبي: SCFHS، والتعليم الإلكتروني/عن بُعد: NELC. ملاحظة: يركّز هذا الدليل على TVTC وهو الأكثر شيوعًا لمراكز التدريب الاعتيادية.",
+          requirements: [] },
+        { title: "الموافقة المبدئية والسجل التجاري",
+          platform: "بوابة التدريب الأهلي TVTC ومركز الأعمال السعودي SBC",
+          action: "الحصول على “الموافقة المبدئية” من TVTC لحجز الاسم، ثم إصدار السجل التجاري المقيّد لـ“مركز تدريب”.",
+          requirements: [] },
+      ]},
+      { title: "المرحلة ٢: تجهيز المنشأة والترخيص البلدي", subnodes: [
+        { title: "توافق الموقع الفعلي",
+          action: "استئجار وتجهيز منشأة تستوفي اشتراطات TVTC الصارمة.",
+          requirements: ["مبنى مستقل أو دور مخصص", "مدخل خاص", "مزوّد بكاميرات مراقبة", "مهيأ لذوي الإعاقة"] },
+        { title: "الترخيص البلدي",
+          platform: "منصة بلدي Balady",
+          action: "إصدار رخصة النشاط التجاري (يتطلب الموافقة المبدئية من TVTC).",
+          requirements: [] },
+        { title: "شهادة الدفاع المدني",
+          platform: "منصة سلامة Salama",
+          action: "إصدار شهادة السلامة بعد تركيب أنظمة الإنذار ومخارج الحريق المطلوبة.",
+          requirements: [] },
+      ]},
+      { title: "المرحلة ٣: إصدار الرخصة التدريبية النهائية", subnodes: [
+        { title: "طلب الرخصة النهائية",
+          platform: "بوابة التدريب الأهلي TVTC",
+          action: "رفع رخصة بلدي وشهادة سلامة وصور المنشأة، وطلب زيارة تفتيشية ميدانية من TVTC.",
+          requirements: [] },
+        { title: "رسوم الرخصة وصلاحيتها",
+          requirements: ["رسوم الإصدار: ٢٬٠٠٠ ريال (صالحة ٥ سنوات)", "رسوم التجديد: ٥٬٠٠٠ ريال"] },
+      ]},
+      { title: "المرحلة ٤: الكادر الإداري والأكاديمي", subnodes: [
+        { title: "تعيين مدير المركز",
+          platform: "Qiwa وبوابة TVTC",
+          requirements: ["سعودي الجنسية", "ألا يقل عمره عن ٢٥ عامًا", "متفرغ تمامًا (ليس موظفًا حكوميًا ولا مسجلًا في عمل خاص آخر)", "عادةً يحمل درجة البكالوريوس", "معتمد رسميًا من TVTC"] },
+        { title: "اعتماد المدربين",
+          platform: "TVTC ومنصة منارة Munarh",
+          requirements: ["اجتياز تقييم واختبار TVTC ليصبح “مدربًا معتمدًا”", "قاعدة تشغيلية: الحد الأقصى ٦ ساعات تدريبية للمدرب في اليوم"] },
+      ]},
+      { title: "المرحلة ٥: اعتماد الدورات والتشغيل", subnodes: [
+        { title: "اعتماد الدورات الاعتيادية (داخل المقر)",
+          platform: "منصة منارة Munarh",
+          action: "يجب رفع جميع الحقائب والدورات التدريبية واعتمادها قبل الإعلان عنها أو بيع التذاكر.",
+          requirements: [] },
+        { title: "تصريح الدورات خارج المقر",
+          action: "عند إقامة دورة في فندق أو مكان خارجي، يجب طلب تصريح خاص.",
+          requirements: ["الرسوم: ١٬٠٠٠ ريال لكل دورة خارج المقر"] },
+      ]},
+    ],
+  },
+
+  {
+    id: "farms-nurseries",
+    titleAr: "المزارع والمشاتل",
+    descAr: "تشغيل مزرعة أو مشتل زراعي، من السجل الزراعي حتى ترخيص التشغيل من نعمة.",
+    icon: "Sprout", accent: "green",
+    nodes: [
+      { title: "المرحلة ١: حيازة الأرض والسجل الزراعي", subnodes: [
+        { title: "السجل التجاري (اختياري ويُنصح به لأعمال B2B)",
+          platform: "مركز الأعمال السعودي SBC",
+          action: "إصدار سجل تجاري للأنشطة الزراعية أو تشغيل المشاتل (يمكن للأفراد العمل بالهوية الوطنية فقط، لكن السجل التجاري مطلوب للعمليات المؤسسية).",
+          requirements: [] },
+        { title: "إصدار السجل الزراعي",
+          platform: "منصة نعمة Naama (وزارة البيئة والمياه والزراعة MEWA)",
+          action: "إثبات حيازة الأرض للحصول على السجل الزراعي الرسمي.",
+          requirements: ["الهوية الوطنية / السجل التجاري", "عقد إيجار إلكتروني ساري (إيجار) أو صك ملكية", "إحداثيات GIS دقيقة لموقع المزرعة/المشتل"] },
+      ]},
+      { title: "المرحلة ٢: التجهيز الفني والفحوصات", subnodes: [
+        { title: "التخطيط الطوبوغرافي والمخطط",
+          action: "إعداد رسم كروكي تفصيلي للموقع يوضح مناطق الإنتاج وشبكات الري ومرافق التخزين.",
+          requirements: [] },
+        { title: "فحوصات المختبر البيئية والسلامة",
+          action: "إجراء الفحوصات المخبرية والحصول على شهادات تثبت سلامة وملاءمة التربة والمياه (ضرورية لمنع انتشار الأمراض الزراعية).",
+          requirements: [] },
+      ]},
+      { title: "المرحلة ٣: رخصة تشغيل المشتل الزراعي", subnodes: [
+        { title: "طلب الترخيص",
+          platform: "منصة نعمة Naama (MEWA)",
+          action: "التقديم على الرخصة التشغيلية برفع المخطط ونتائج فحوصات المختبر والسجل الزراعي.",
+          requirements: [] },
+        { title: "الامتثال والاشتراطات التشغيلية",
+          requirements: ["الموارد: تطبيق أنظمة ري حديثة موفّرة للمياه", "العمالة: ارتداء العمال زيًّا موحدًا والحفاظ على معايير نظافة عالية للموقع والأفراد", "التتبّع: وضع ملصق على كل نبتة/دفعة يوضح بيانات المنشأة (الاسم، رقم السجل/الرخصة) لأغراض التتبّع"] },
+      ]},
+      { title: "المرحلة ٤: البيع التجاري وواجهة التجزئة (مشروط)", subnodes: [
+        { title: "رخصة التجزئة البلدية",
+          platform: "منصة بلدي Balady",
+          action: "عند وجود واجهة تجزئة للبيع المباشر للجمهور (B2C)، يجب إصدار رخصة نشاط تجاري من البلدية لمنطقة البيع (منطقة الإنتاج الزراعي نفسها تخضع لـ MEWA).",
+          requirements: [] },
+      ]},
+    ],
+  },
+
+  {
+    id: "pharmacies",
+    titleAr: "الصيدليات",
+    descAr: "افتتاح صيدلية تجزئة مرخّصة من وزارة الصحة، حتى تفعيل نظام تتبّع الأدوية.",
+    icon: "Pill", accent: "teal",
+    nodes: [
+      { title: "المرحلة ١: الملكية والأساس القانوني", subnodes: [
+        { title: "التحقق من أهلية الملكية",
+          requirements: ["يجب أن يكون المالك (أو أحد الشركاء على الأقل) سعوديًا مرخّصًا كصيدلي من الهيئة السعودية للتخصصات الصحية SCFHS"] },
+        { title: "السجل التجاري",
+          platform: "مركز الأعمال السعودي SBC",
+          action: "إصدار سجل تجاري لصيدلية تجزئة مع استيفاء شروط الملكية أعلاه.",
+          requirements: [] },
+      ]},
+      { title: "المرحلة ٢: اعتماد الموقع وترخيص المنشأة", subnodes: [
+        { title: "اختيار الموقع وقواعد المسافات",
+          action: "اختيار موقع تجاري يلتزم بأنظمة المسافات البلدية (الحفاظ على حد أدنى من المسافة عن الصيدليات القائمة لمنع التكدّس). المساحة الدنيا عادةً ٢٥–٣٠ مترًا مربعًا.",
+          requirements: [] },
+        { title: "الرخص البلدية والدفاع المدني",
+          platform: "منصة بلدي Balady ومنصة سلامة Salama",
+          action: "إصدار رخصة النشاط التجاري (بلدي) وشهادة السلامة (سلامة).",
+          requirements: [] },
+        { title: "الموافقة المبدئية من وزارة الصحة",
+          platform: "بوابة صحة Seha",
+          action: "تقديم السجل التجاري ورخصة بلدي ومخطط الموقع للحصول على الموافقة المبدئية لبدء تجهيز المنشأة.",
+          requirements: [] },
+      ]},
+      { title: "المرحلة ٣: تجهيز المنشأة والجاهزية التشغيلية", subnodes: [
+        { title: "توافق التخزين ودرجات الحرارة",
+          requirements: ["تركيب ثلاجات طبية مزوّدة بمراقبة رقمية لدرجة الحرارة", "الحفاظ على درجة حرارة الغرفة (عادةً أقل من ٢٥°م)"] },
+        { title: "توافق الأمن والتصميم الداخلي",
+          requirements: ["تركيب كاميرات مراقبة شاملة", "فصل واضح بين طاولة الصرف ومنطقة الجمهور"] },
+      ]},
+      { title: "المرحلة ٤: الترخيص النهائي والتوظيف", subnodes: [
+        { title: "تعيين مدير الصيدلية",
+          requirements: ["يجب أن يكون المدير صيدليًا سعوديًا", "متفرغًا تمامًا (غير موظف في القطاع الحكومي)", "حاصلًا على تصنيف وتسجيل ساري من SCFHS"] },
+        { title: "إصدار الرخصة الصحية النهائية",
+          platform: "بوابة صحة Seha",
+          action: "رفع مؤهلات المدير وطلب الزيارة التفتيشية الميدانية، وعند الاجتياز تُصدر الرخصة الصحية التشغيلية النهائية.",
+          requirements: [] },
+      ]},
+      { title: "المرحلة ٥: تفعيل نظام تتبّع الأدوية RSD", subnodes: [
+        { title: "التسجيل في نظام رصد RSD",
+          platform: "نظام رصد RSD",
+          action: "نظام تتبّع إلكتروني تفرضه SFDA لضمان سلامة الأدوية ومكافحة التزوير. تسجيل الصيدلية في نظام رصد، ومسح كل عبوة دواء واردة وكل دواء يُصرف عبر الباركود داخل النظام.",
+          requirements: [] },
+      ]},
+      { title: "المرحلة ٦: عمليات المواد الخاضعة للرقابة (شرط خاص)", subnodes: [
+        { title: "ترخيص متخصص",
+          action: "عند رغبة الصيدلية في صرف الأدوية المؤثرة عقليًا أو المخدرة، يلزم تصريح منفصل وعالي التنظيم من وزارة الصحة/SFDA.",
+          requirements: [] },
+        { title: "متطلبات الأمن المسبقة",
+          requirements: ["تركيب خزنة حديدية ثقيلة ومثبّتة بالأرض مخصّصة حصريًا لهذه الأدوية", "مزوّدة بنظام إنذار مخصص"] },
+        { title: "قواعد الصرف",
+          action: "يتطلب توثيقًا ورقيًا وإلكترونيًا صارمًا. لا يُسمح بالصرف إلا عبر وصفات إلكترونية متخصصة (مثل وصفتي)، مع مسؤوليات جنائية مشددة عند وجود أي تعارض.",
+          requirements: [] },
+      ]},
+    ],
+  },
+
+  {
+    id: "import-export",
+    titleAr: "الاستيراد والتصدير",
+    descAr: "تفعيل نشاط الاستيراد والتصدير، من الربط الجمركي حتى الإفراج عبر فسح.",
+    icon: "Ship", accent: "blue",
+    nodes: [
+      { title: "المرحلة ١: الأساس القانوني وتفعيل الجمارك", subnodes: [
+        { title: "السجل التجاري",
+          platform: "مركز الأعمال السعودي SBC",
+          action: "إصدار سجل تجاري بأنشطة تجارة أو استيراد أو تصدير محددة (لم يعد الاستيراد/التصدير العام مقبولًا؛ يجب اختيار قطاعات محددة).",
+          requirements: [] },
+        { title: "الربط مع ZATCA والجمارك",
+          platform: "بوابة ZATCA (هيئة الزكاة والضريبة والجمارك)",
+          action: "التسجيل في ضريبة القيمة المضافة وربط السجل التجاري بنظام الجمارك لتفعيل رقم المستورد/المصدّر (غالبًا مرتبط مباشرة بالسجل التجاري والرقم الموحّد).",
+          requirements: [] },
+      ]},
+      { title: "المرحلة ٢: مطابقة المنتجات (منصة سابر)", subnodes: [
+        { title: "التحقق من رمز HS",
+          platform: "سابر Saber / تعريفات ZATCA",
+          action: "البحث عن رمز النظام المنسّق (HS) للمنتج لتحديد ما إذا كان “خاضعًا للرقابة” (يتطلب فحصًا مخبريًا) أو “غير خاضع للرقابة”.",
+          requirements: [] },
+        { title: "شهادة المنتج (PC)",
+          platform: "سابر Saber",
+          requirements: ["المنتجات الخاضعة للرقابة: شهادة مطابقة تُراجَع من جهة تقييم مطابقة معتمدة (CAB)، صالحة لسنة واحدة (الرسوم: نحو ٥٠٠ ريال + رسوم CAB + الضريبة)", "المنتجات غير الخاضعة للرقابة: إقرار ذاتي (تعهّد المستورد بالسلامة)، صالح بلا مدة لنفس المنتج (الرسوم: مجانًا)"] },
+        { title: "شهادة الإرسالية (SC)",
+          platform: "سابر Saber",
+          action: "طلب شهادة إرسالية لكل شحنة واردة قبل وصولها إلى الميناء السعودي، وتُربط تلقائيًا بشهادة المنتج أو الإقرار الذاتي الساري.",
+          requirements: ["الرسوم: ٣٥٠ ريال + الضريبة"] },
+      ]},
+      { title: "المرحلة ٣: تصاريح الجهات المتخصصة (حسب المنتج)", subnodes: [
+        { title: "الأغذية والأدوية ومستحضرات التجميل",
+          platform: "نظام غد GHAD (الهيئة العامة للغذاء والدواء SFDA)",
+          action: "تسجيل الشركة وتسجيل المنتج والحصول على تصريح إفراج للاستيراد.",
+          requirements: [] },
+        { title: "النباتات والبذور والحيوانات الحية",
+          platform: "منصة نعمة Naama (وزارة البيئة والمياه والزراعة MEWA)",
+          action: "الحصول على تصاريح الاستيراد الزراعية أو البيطرية.",
+          requirements: [] },
+        { title: "معدات الاتصالات وتقنية المعلومات",
+          platform: "بوابة CST (هيئة الاتصالات والفضاء والتقنية)",
+          action: "الحصول على موافقة المعدات للأجهزة ذات الترددات الراديوية أو شرائح SIM.",
+          requirements: [] },
+      ]},
+      { title: "المرحلة ٤: التخليص الجمركي والخدمات اللوجستية (المرحلة النهائية)", subnodes: [
+        { title: "تفويض المخلّص الجمركي",
+          platform: "منصة فسح Fasah",
+          action: "يدخل المستورد إلى فسح وينشئ تفويضًا إلكترونيًا لمخلّص جمركي مرخّص للتعامل مع الشحنة.",
+          requirements: [] },
+        { title: "البيان الجمركي",
+          platform: "فسح Fasah",
+          action: "يقدّم المخلّص مستندات الشحن (الفاتورة التجارية، بوليصة الشحن، شهادة المنشأ، شهادة إرسالية سابر).",
+          requirements: [] },
+        { title: "دفع الرسوم والإفراج",
+          platform: "فسح Fasah / سداد SADAD",
+          action: "دفع الرسوم الجمركية المطبّقة وضريبة القيمة المضافة ١٥٪ عبر سداد. بعد الدفع والفحص (إن طُلب)، يصدر أمر الإفراج الجمركي.",
+          requirements: [] },
+      ]},
+    ],
+  },
+
+  {
+    id: "construction",
+    titleAr: "مقاولات البناء",
+    descAr: "تأسيس شركة مقاولات، من السجل التجاري حتى التصنيف لدى هيئة المقاولين.",
+    icon: "Building2", accent: "amber",
+    nodes: [
+      { title: "المرحلة ١: التأسيس القانوني والرسمي (الأساس)", subnodes: [
+        { title: "السجل التجاري",
+          platform: "مركز الأعمال السعودي SBC",
+          action: "حجز الاسم التجاري وإصدار السجل التجاري.",
+          requirements: ["اختيار نشاط “التشييد والبناء” من دليل أنشطة ISIC4"] },
+        { title: "التسجيلات الحكومية التلقائية",
+          action: "تُفعّل تلقائيًا عند إصدار السجل التجاري.",
+          requirements: ["الجهات المرتبطة: الغرفة التجارية، ZATCA (الرقم الضريبي)، Qiwa (وزارة الموارد البشرية)، GOSI (التأمينات الاجتماعية)، العنوان الوطني (SPL)", "المخرج: الرقم الوطني الموحّد (٧٠٠)"] },
+        { title: "الحساب البنكي للشركة",
+          action: "فتح الحساب وإيداع رأس المال المطلوب وتفعيله.",
+          requirements: [] },
+      ]},
+      { title: "المرحلة ٢: الترخيص التشغيلي (المقر الرئيسي)", subnodes: [
+        { title: "عقد الإيجار التجاري",
+          platform: "شبكة إيجار Ejar",
+          action: "صياغة وتوثيق عقد إيجار تجاري للمكتب.",
+          requirements: [] },
+        { title: "الرخصة البلدية",
+          platform: "منصة بلدي Balady",
+          action: "إصدار رخصة النشاط التجاري للمكتب الفعلي.",
+          requirements: [] },
+        { title: "رخصة الدفاع المدني",
+          platform: "منصة سلامة Salama",
+          action: "إصدار شهادة امتثال الدفاع المدني (فورية عادةً للمكاتب الإدارية).",
+          requirements: [] },
+      ]},
+      { title: "المرحلة ٣: التسجيل في الهيئة السعودية للمقاولين SCA (إلزامي)", subnodes: [
+        { title: "إنشاء الملف",
+          platform: "منصة مقاول Muqawil",
+          action: "تسجيل المنشأة باستخدام الرقم الموحّد (٧٠٠) والسجل التجاري ورقم GOSI (تُجلب البيانات تلقائيًا).",
+          requirements: [] },
+        { title: "إصدار العضوية",
+          action: "دفع الرسوم السنوية (تتراوح من ٧٥٠ إلى ١٠٬٠٠٠ ريال حسب عدد الموظفين).",
+          requirements: ["المخرج: شهادة عضوية الهيئة السعودية للمقاولين"] },
+      ]},
+      { title: "المرحلة ٤: تصنيف المقاولين (تدرّج التشغيل الأساسي)", subnodes: [
+        { title: "المسار أ: التصنيف السادس (اعتماد مقاول)",
+          platform: "منصة بلدي Balady (بوابة تصنيف الأعمال عبر Nafath)",
+          requirements: ["المستهدف: الشركات الناشئة / في سنتها الأولى", "النطاق: مشاريع القطاع الخاص فقط", "لا يلزم تقديم قوائم مالية"] },
+        { title: "المسار ب: التصنيفات ١ إلى ٥ (المشاريع الحكومية)",
+          platform: "منصة بلدي Balady (بوابة تصنيف الأعمال عبر Nafath)",
+          requirements: ["المستهدف: الشركات القائمة (التصنيف ١ هو الأعلى، والتصنيف ٥ حتى ٥ ملايين ريال)", "المتطلب المالي: سنة مالية مقفلة واحدة على الأقل، وقوائم مدققة تُرفع عبر “قوائم” Qawaem من محاسب قانوني معتمد", "المتطلب الفني: تقييم أعمال المنشأة (عدد المشاريع، نسبة الإنجاز في البناء/الصيانة، الكادر الهندسي، المعدات)", "المتطلب الائتماني/الإداري: سجلات بنكية نظيفة (بدون تعثّر)، والامتثال الكامل لـ ZATCA وGOSI ونسب السعودة"] },
+      ]},
+      { title: "المرحلة ٥: أفضل الممارسات التشغيلية (بعد التأسيس)", subnodes: [
+        { title: "التصنيف متعدد التخصصات",
+          action: "يمكن الحصول على تصنيفات في قطاعات متعددة (الطرق، البنية التحتية، إلخ) عند استيفاء متطلبات الكادر الفني لكل قطاع.",
+          requirements: [] },
+        { title: "دورة التجديد",
+          action: "التصنيف صالح لسنة واحدة. يجب بدء التجديد قبل ٩٠ يومًا من انتهائه لتفادي تعليق التقديم على المشاريع أو المدفوعات.",
+          requirements: [] },
+      ]},
+    ],
+  },
+
+  {
+    id: "manufacturing",
+    titleAr: "المصانع والتصنيع",
+    descAr: "إنشاء مصنع، من الرخصة الصناعية المبدئية حتى الرخصة النهائية والتشغيل.",
+    icon: "Factory", accent: "red",
+    nodes: [
+      { title: "المرحلة ١: تحديد نطاق المشروع والتأسيس الأولي", subnodes: [
+        { title: "السجل التجاري",
+          platform: "مركز الأعمال السعودي SBC",
+          action: "إصدار سجل تجاري صناعي.",
+          requirements: [] },
+        { title: "خطة العمل ودراسة الجدوى",
+          requirements: ["إعداد دراسة جدوى شاملة تتضمن الطاقة الإنتاجية ومواصفات الآلات ومتطلبات المواد الخام والسوق المستهدف", "رأس المال الأدنى المطلوب عادةً ٥٠٠٬٠٠٠ ريال"] },
+      ]},
+      { title: "المرحلة ٢: الرخصة الصناعية المبدئية", subnodes: [
+        { title: "إصدار الرخصة الصناعية المبدئية",
+          platform: "بوابة صناعي Senaei (وزارة الصناعة والثروة المعدنية MIM)",
+          action: "تسمح هذه الرخصة ببناء المصنع وتأمين الأرض واستيراد الآلات، ولا تسمح بالإنتاج التجاري أو البيع. تقديم السجل التجاري ودراسة الجدوى.",
+          requirements: ["الصلاحية: سنة واحدة (قابلة للتجديد إذا كان البناء مستمرًا)"] },
+      ]},
+      { title: "المرحلة ٣: تخصيص الأرض والبناء", subnodes: [
+        { title: "الحصول على الأرض",
+          platform: "MODON (الهيئة السعودية للمدن الصناعية ومناطق التقنية) أو RCJY (الهيئة الملكية للجبيل وينبع)",
+          action: "التقديم على تخصيص أرض صناعية بناءً على الرخصة المبدئية.",
+          requirements: [] },
+        { title: "الموافقات البيئية والسلامة",
+          platform: "المركز الوطني للرقابة على الالتزام البيئي NCEM والدفاع المدني (سلامة Salama)",
+          action: "الحصول على شهادة الامتثال البيئي وبناء المنشأة مع الالتزام بأكواد الحريق والسلامة الصارمة.",
+          requirements: [] },
+      ]},
+      { title: "المرحلة ٤: الإعفاء الجمركي (حافز مالي)", subnodes: [
+        { title: "طلب الإعفاء الجمركي",
+          platform: "بوابة صناعي Senaei (مرتبطة بـ ZATCA)",
+          action: "التقديم على “الإعفاء الجمركي” لاستيراد الآلات الثقيلة والمعدات والمواد الخام الأولية. توفّر هذه الخطوة رأس مال كبير أثناء مرحلة التأسيس.",
+          requirements: [] },
+      ]},
+      { title: "المرحلة ٥: الرخصة الصناعية النهائية والتشغيل", subnodes: [
+        { title: "التفتيش على الجاهزية",
+          platform: "بوابة صناعي Senaei (MIM)",
+          action: "الرخصة النهائية تسمح رسميًا بالتصنيع التجاري وبيع المنتجات في السوق. بعد اكتمال البناء وتركيب الآلات، طلب زيارة تفتيشية ميدانية من وزارة الصناعة.",
+          requirements: [] },
+        { title: "مطابقة المنتجات",
+          platform: "سابر Saber / SASO",
+          action: "التأكد من مطابقة المنتجات المصنّعة لمعايير الهيئة السعودية للمواصفات والمقاييس والجودة (SASO) وتسجيلها.",
+          requirements: [] },
+        { title: "إصدار الرخصة",
+          platform: "بوابة صناعي Senaei",
+          requirements: ["المخرج: استلام الرخصة الصناعية النهائية", "الصلاحية: حتى ٥ سنوات"] },
+      ]},
+      { title: "المرحلة ٦: الحوافز التشغيلية المستمرة (بعد التأسيس)", subnodes: [
+        { title: "التسجيل في حوافز ما بعد التأسيس",
+          action: "التسجيل لدى هيئة المحتوى المحلي والمشتريات الحكومية (LCGPA) للحصول على الأولوية في المناقصات الحكومية، واستكشاف خيارات التمويل من صندوق التنمية الصناعية السعودي (SIDF).",
+          requirements: [] },
+      ]},
+    ],
+  },
+
+  {
+    id: "warehousing",
+    titleAr: "التخزين والخدمات اللوجستية",
+    descAr: "ترخيص مستودعات ومرافق تخزين، من تصنيف الموقع حتى التراخيص المتخصصة.",
+    icon: "Warehouse", accent: "stone",
+    nodes: [
+      { title: "المرحلة ١: تصنيف الموقع والتأسيس القانوني", subnodes: [
+        { title: "السجل التجاري",
+          platform: "مركز الأعمال السعودي SBC",
+          action: "إصدار سجل تجاري بأنشطة التخزين/الخدمات اللوجستية المحددة.",
+          requirements: [] },
+        { title: "الامتثال لتصنيف المنطقة (خطوة حاسمة)",
+          requirements: ["يُمنع إنشاء المستودعات في المناطق السكنية منعًا باتًا", "يجب أن تقع المنشأة في المناطق الصناعية المخصصة (مثل MODON) أو الحدائق اللوجستية أو أحياء التخزين المعتمدة بلديًا"] },
+      ]},
+      { title: "المرحلة ٢: ترخيص المنشأة الأساسي", subnodes: [
+        { title: "السلامة من الحريق والدفاع المدني",
+          platform: "منصة سلامة Salama",
+          action: "أهم متطلب تشغيلي؛ تركيب أنظمة إطفاء صناعية وشبكات إنذار ومخارج طوارئ واضحة بحسب حجم المستودع والمواد المخزّنة، والحصول على شهادة سلامة الدفاع المدني.",
+          requirements: [] },
+        { title: "الرخصة البلدية (الرخصة الأساسية)",
+          platform: "منصة بلدي Balady",
+          action: "تقديم السجل التجاري وعقد الإيجار/صك الملكية والمخططات الهندسية وشهادة سلامة لإصدار رخصة النشاط التجاري الأساسية للمستودع.",
+          requirements: [] },
+      ]},
+      { title: "المرحلة ٣: تراخيص التخزين المتخصصة (حسب نوع البضاعة)", subnodes: [
+        { title: "المسار أ: الأغذية والأجهزة الطبية والأدوية",
+          platform: "نظام غد GHAD",
+          action: "التقديم على رخصة مستودع من SFDA.",
+          requirements: ["الجهة المنظّمة: SFDA (الهيئة العامة للغذاء والدواء)", "خرائط حرارة دقيقة، وتحكم مناخي رقمي (مبرّدات/مجمّدات)، وأنظمة مكافحة آفات", "الرسوم: ٤٬٠٠٠ ريال صالحة ٥ سنوات"] },
+        { title: "المسار ب: الأسمدة الزراعية والمبيدات",
+          platform: "منصة نعمة Naama",
+          requirements: ["الجهة المنظّمة: MEWA (وزارة البيئة والمياه والزراعة)", "مناطق عزل، وتهوية متخصصة، وبروتوكولات احتواء التسرّب"] },
+        { title: "المسار ج: المواد الكيميائية الخطرة والمتفجرات",
+          requirements: ["الجهة المنظّمة: الأمن العام (وزارة الداخلية) وNCEM (المركز الوطني للرقابة على الالتزام البيئي)", "إجراءات أمنية مشددة، وكاميرات مراقبة مرتبطة بقوات الأمن، وخزانات تخزين كيميائي متخصصة، وتقييم صارم للأثر البيئي"] },
+      ]},
+      { title: "المرحلة ٤: تكامل النقل والخدمات اللوجستية (اختياري وشائع)", subnodes: [
+        { title: "رخصة الشحن والنقل",
+          platform: "منصة نقل Naql (الهيئة العامة للنقل TGA)",
+          action: "عند تشغيل المستودع أسطول توصيل خاص (شاحنات)، يلزم الحصول على رخصة نقل من TGA.",
+          requirements: [] },
+        { title: "بطاقات التشغيل",
+          action: "إصدار بطاقة تشغيل لكل شاحنة في الأسطول لنقل البضائع قانونيًا على الطرق السعودية.",
+          requirements: [] },
+      ]},
+    ],
+  },
+
+  {
+    id: "medical-devices",
+    titleAr: "الأجهزة الطبية",
+    descAr: "تجارة أو تصنيع الأجهزة الطبية، من رخصة المنشأة حتى إذن تسويق الجهاز.",
+    icon: "Stethoscope", accent: "pink",
+    nodes: [
+      { title: "المرحلة ١: التأسيس القانوني وترخيص المنشأة", subnodes: [
+        { title: "السجل التجاري والترخيص البلدي",
+          platform: "مركز الأعمال السعودي SBC ومنصة بلدي Balady",
+          action: "إصدار سجل تجاري لتجارة/تصنيع الأجهزة الطبية. الحصول على الرخصة البلدية للمكتب والمستودع، إلى جانب شهادة الدفاع المدني عبر منصة سلامة Salama.",
+          requirements: [] },
+        { title: "تعيين مدير فني",
+          requirements: ["تعيين سعودي الجنسية كمدير فني، عادةً بخلفية في الهندسة الطبية الحيوية أو الصيدلة أو مجال صحي ذي صلة"] },
+      ]},
+      { title: "المرحلة ٢: رخصة منشأة الأجهزة الطبية (MDEL)", subnodes: [
+        { title: "نظام إدارة الجودة (QMS)",
+          action: "هذه رخصة للشركة/المستودع للتعامل قانونيًا مع الأجهزة الطبية. على المنشأة تطبيق نظام إدارة الجودة والحصول على شهادة ISO 13485 (نظام إدارة جودة الأجهزة الطبية).",
+          requirements: [] },
+        { title: "إصدار رخصة MDEL",
+          platform: "نظام غد GHAD (الهيئة العامة للغذاء والدواء SFDA)",
+          action: "تقديم السجل التجاري ورخصة بلدي ومؤهلات المدير الفني وشهادة ISO 13485 إلى نظام غد.",
+          requirements: ["الرسوم والصلاحية: ٤٬٠٠٠ ريال (صالحة ٥ سنوات)"] },
+      ]},
+      { title: "المرحلة ٣: رخصة الممثل المعتمد (AR) (للمستوردين فقط)", subnodes: [
+        { title: "رخصة الممثل المعتمد (AREL)",
+          platform: "نظام غد GHAD (SFDA)",
+          action: "عند استيراد الأجهزة، يجب أن يعيّن المصنّع الأجنبي الشركة السعودية رسميًا ممثلًا معتمدًا له في المملكة. إبرام اتفاقية تمثيل (تفويض) بين المصنّع الأجنبي والمنشأة السعودية، على أن تُصدّق (أبوستيل/تصديق) في بلد المنشأ وتُرفع إلى نظام غد للحصول على رخصة الممثل المعتمد (AREL).",
+          requirements: [] },
+      ]},
+      { title: "المرحلة ٤: إذن تسويق الجهاز الطبي (MDMA)", subnodes: [
+        { title: "إعداد الملف الفني",
+          action: "هذه رخصة للمنتج/الجهاز نفسه، وبدونها لا يمكن للجهاز دخول السوق السعودي أو التخليص الجمركي. تجميع الملف الفني للجهاز وتقارير التقييم السريري ودراسات السلامة ووثائق إدارة المخاطر.",
+          requirements: [] },
+        { title: "التصنيف والتقديم",
+          platform: "نظام غد GHAD (SFDA)",
+          action: "تصنيف الجهاز حسب مستوى الخطورة (الفئة I، IIa، IIb، III) وتقديم الملف عبر نظام غد.",
+          requirements: [] },
+        { title: "المراجعة والإصدار",
+          requirements: ["المدة الزمنية: تستغرق مراجعة SFDA نحو ٩٠ يومًا حسب فئة خطورة الجهاز", "الصلاحية: شهادة MDMA صالحة لمدة ٣ سنوات"] },
+      ]},
+    ],
+  },
+];
+
+/* ---------- components ---------- */
+
+function DashboardCard({ activity, onOpen }) {
+  const a = ACCENT[activity.accent];
+  return (
+    <button
+      onClick={() => onOpen(activity.id)}
+      aria-label={`فتح خارطة طريق ${activity.titleAr}`}
+      className={`group text-right bg-white border border-slate-200 rounded-2xl p-6 shadow-sm
+                  transition-all duration-200 hover:-translate-y-1 hover:shadow-md ${a.hover}
+                  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300`}
+    >
+      <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-4 ${a.tint}`}>
+        <Icon name={activity.icon} className="w-7 h-7" />
+      </div>
+      <h3 className="text-lg font-bold text-slate-800 mb-1">{activity.titleAr}</h3>
+      <p className="text-sm text-slate-500 leading-relaxed">{activity.descAr}</p>
+      <span className={`inline-block mt-4 text-sm font-medium ${a.head}`}>عرض خارطة الطريق ←</span>
+    </button>
+  );
+}
+
+function Dashboard({ onOpen }) {
+  return (
+    <div className="max-w-6xl mx-auto px-4 py-10">
+      <header className="text-center mb-10">
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-800 mb-3">
+          دليل تأسيس الأنشطة التجارية في السعودية
+        </h1>
+        <p className="text-slate-500 max-w-2xl mx-auto">
+          خرائط طريق تفصيلية خطوة بخطوة لترخيص وتشغيل ثمانية أنشطة تجارية، مع المنصات والإجراءات والمتطلبات لكل مرحلة.
+        </p>
+      </header>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {ACTIVITIES.map((act) => (
+          <DashboardCard key={act.id} activity={act} onOpen={onOpen} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function SubNodeCard({ sub, accent }) {
+  const a = ACCENT[accent];
+  return (
+    <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+      <h4 className="font-bold text-slate-800 mb-2">{sub.title}</h4>
+
+      {sub.platform && (
+        <span className={`inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full mb-2 ${a.badge}`}>
+          <span className="opacity-70">المنصة</span>
+          <span>{sub.platform}</span>
+        </span>
+      )}
+
+      {sub.action && (
+        <p className="text-sm text-slate-600 leading-relaxed mb-2">
+          <span className="text-slate-400 font-medium">الإجراء: </span>
+          {sub.action}
+        </p>
+      )}
+
+      {sub.requirements && sub.requirements.length > 0 && (
+        <div className="mt-2">
+          <div className="text-slate-400 font-medium text-sm mb-1.5">المتطلبات:</div>
+          <ul className="space-y-1.5">
+            {sub.requirements.map((r, i) => (
+              <li key={i} className="flex gap-2 text-sm text-slate-600 leading-relaxed">
+                <span className={`mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 ${a.dot}`}></span>
+                <span>{r}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function Roadmap({ activity, onBack }) {
+  const a = ACCENT[activity.accent];
+  return (
+    <div className="max-w-4xl mx-auto px-4 py-8">
+      <div className="flex items-center justify-between gap-4 mb-8 flex-wrap">
+        <div className="flex items-center gap-3">
+          <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${a.tint}`}>
+            <Icon name={activity.icon} className="w-6 h-6" />
+          </div>
+          <div>
+            <h2 className="text-2xl font-extrabold text-slate-800">{activity.titleAr}</h2>
+            <p className="text-sm text-slate-500">{activity.descAr}</p>
+          </div>
+        </div>
+        <button
+          onClick={onBack}
+          aria-label="الرجوع إلى اللوحة الرئيسية"
+          className="text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-lg px-4 py-2
+                     hover:bg-slate-50 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-300"
+        >
+           رجوع للوحة الرئيسية ←
+        </button>
+      </div>
+
+      {/* vertical timeline: connecting line on the right (RTL) */}
+      <div className="relative pr-6 sm:pr-8">
+        <div className={`absolute top-2 bottom-2 right-[7px] sm:right-[9px] w-0.5 ${a.line}`}></div>
+
+        <div className="space-y-8">
+          {activity.nodes.map((node, ni) => (
+            <div key={ni} className="relative">
+              {/* connector dot */}
+              <span className={`absolute -right-6 sm:-right-8 top-3 w-4 h-4 rounded-full border-2 border-white ${a.dot}`}></span>
+
+              {/* main node pill */}
+              <div className={`inline-block text-white font-bold text-sm rounded-lg px-4 py-2 mb-4 shadow-sm ${a.node}`}>
+                {node.title}
+              </div>
+
+              {/* sub-nodes */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {node.subnodes.map((sub, si) => (
+                  <SubNodeCard key={si} sub={sub} accent={activity.accent} />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  const [view, setView] = useState("dashboard");
+  const [activeId, setActiveId] = useState(null);
+  const [mounted, setMounted] = useState(true);
+
+  const go = (nextView, id) => {
+    setMounted(false);
+    setTimeout(() => {
+      if (id !== undefined) setActiveId(id);
+      setView(nextView);
+      setMounted(true);
+      try { window.scrollTo(0, 0); } catch (e) {}
+    }, 200);
+  };
+
+  const active = ACTIVITIES.find((x) => x.id === activeId);
+
+  return (
+    <div className={`min-h-screen bg-slate-50 transition-all duration-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
+      {view === "dashboard" || !active
+        ? <Dashboard onOpen={(id) => go("roadmap", id)} />
+        : <Roadmap activity={active} onBack={() => go("dashboard")} />}
+
+      <footer className="mt-16 border-t border-slate-200 bg-white">
+        <div className="max-w-6xl mx-auto px-4 py-6 text-center text-sm text-slate-500 leading-relaxed">
+          <p>دليل توضيحي لتأسيس الأنشطة التجارية — البيانات للأغراض التدريبية وقابلة للتحديث.</p>
+          <p className="mt-1"> 2026@— أعد بكل حب بواسطة عمران ومصطفى ❤️. جميع الحقوق محفوظة.</p>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+
+<!-- Bootstrap: transform the JSX source with the CLASSIC runtime so it uses the
+     global React (UMD) instead of `import` from "react/jsx-runtime" (which breaks
+     in a plain script with no module system). -->
+<script>
+  (function () {
+    var src = document.getElementById("app-source").textContent;
+    var out = Babel.transform(src, {
+      presets: [["react", { runtime: "classic" }]]
+    }).code;
+    var s = document.createElement("script");
+    s.textContent = out;
+    document.body.appendChild(s);
+  })();
+</script>

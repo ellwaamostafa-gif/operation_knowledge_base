@@ -1,0 +1,37 @@
+# Title: Saudi Warehousing & Storage Facilities Roadmap
+
+## Node 1: Location Zoning & Legal Setup
+*   **Sub-node 1.1: Commercial Registration (CR)**
+    *   Platform: Saudi Business Center (SBC)
+    *   Action: Issue CR with specific warehousing/logistics activities.
+*   **Sub-node 1.2: Zoning Compliance (Crucial Step)**
+    *   Condition: Warehouses are strictly prohibited in residential areas. The facility MUST be located in designated industrial zones (e.g., MODON), logistic parks, or municipal-approved warehousing districts.
+
+## Node 2: Core Facility Licensing
+*   **Sub-node 2.1: Fire Safety & Civil Defense**
+    *   Platform: Salama Portal
+    *   Action: This is the most critical operational requirement. You must install industrial-grade fire suppression systems, alarm networks, and clear emergency exits based on the warehouse size and stored materials. Obtain the Civil Defense Safety Certificate.
+*   **Sub-node 2.2: Municipal License (Core License)**
+    *   Platform: Balady Platform
+    *   Action: Submit the CR, Lease Agreement/Title Deed, Engineering Blueprints, and the Salama Certificate to issue the foundational Commercial Activity License for the warehouse.
+
+## Node 3: Specialized Storage Licenses (Conditional on Cargo Type)
+*   **Branch A: Food, Medical Devices, & Pharmaceuticals**
+    *   Regulator: SFDA (Saudi Food and Drug Authority)
+    *   Platform: GHAD System
+    *   Requirements: Strict temperature mapping, digital climate control (chillers/freezers), and pest control systems.
+    *   Action: Apply for an SFDA Warehouse License (Fee: 4,000 SAR valid for 5 years).
+*   **Branch B: Agricultural Fertilizers & Pesticides**
+    *   Regulator: MEWA (Ministry of Environment, Water and Agriculture)
+    *   Platform: Naama Portal
+    *   Requirements: Isolation zones, specialized ventilation, and spill-containment protocols.
+*   **Branch C: Hazardous Chemicals & Explosives**
+    *   Regulator: Public Security (Ministry of Interior) & NCEM (National Center for Environmental Compliance)
+    *   Requirements: Extreme security measures, CCTV linked to security forces, specialized chemical storage tanks, and a rigorous environmental impact assessment.
+
+## Node 4: Transport & Logistics Integration (Optional but Common)
+*   **Sub-node 4.1: Freight Forwarding & Transport License**
+    *   Platform: Naql Portal (Transport General Authority - TGA)
+    *   Action: If the warehouse operates its own delivery fleet (trucks), a transport license from TGA is required.
+*   **Sub-node 4.2: Operating Cards (بطاقات التشغيل)**
+    *   Action: Issue an operating card for each individual truck in the fleet to legally transport goods on Saudi highways.

@@ -1,0 +1,41 @@
+# Title: Saudi Manufacturing & Factories Roadmap
+
+## Node 1: Project Scoping & Preliminary Setup
+*   **Sub-node 1.1: Commercial Registration (CR)**
+    *   Platform: Saudi Business Center (SBC)
+    *   Action: Issue an industrial CR.
+*   **Sub-node 1.2: Business Plan & Feasibility Study**
+    *   Requirement: Prepare a comprehensive feasibility study including production capacity, machinery specifications, raw material requirements, and targeted market. Minimum required capital is usually 500,000 SAR.
+
+## Node 2: Initial Industrial License (ترخيص صناعي مبدئي)
+*   **Description:** This license allows you to build the factory, secure land, and import machinery. It DOES NOT allow commercial production or sales.
+*   **Platform:** Senaei Portal (صناعي) - Ministry of Industry & Mineral Resources (MIM)
+*   **Action:** Submit the CR and Feasibility Study.
+*   **Validity:** 1 Year (Can be renewed if construction is ongoing).
+
+## Node 3: Land Allocation & Construction
+*   **Sub-node 3.1: Land Acquisition**
+    *   Platform: MODON (Saudi Authority for Industrial Cities and Technology Zones) or RCJY (Royal Commission for Jubail and Yanbu).
+    *   Action: Apply for industrial land allocation based on the Initial License.
+*   **Sub-node 3.2: Environmental & Safety Approvals**
+    *   Entities: National Center for Environmental Compliance (NCEM) & Civil Defense (Salama).
+    *   Action: Obtain environmental clearance (Certificate of Environmental Compliance) and construct the facility adhering to strict fire and safety codes.
+
+## Node 4: Customs Exemption (Financial Incentive Step)
+*   **Platform:** Senaei Portal (Linked to ZATCA)
+*   **Action:** Apply for "Customs Exemption" (إعفاء جمركي) for importing heavy machinery, equipment, and initial raw materials. This step saves significant capital during the setup phase.
+
+## Node 5: Final Industrial License & Operations (ترخيص صناعي نهائي)
+*   **Description:** This license officially permits commercial manufacturing and selling products in the market.
+*   **Platform:** Senaei Portal (MIM)
+*   **Sub-node 5.1: Readiness Inspection**
+    *   Action: Once construction is complete and machinery is installed, request a physical inspection from the Ministry of Industry.
+*   **Sub-node 5.2: Product Compliance**
+    *   Platform: Saber / SASO
+    *   Action: Ensure the manufactured products meet the standards set by the Saudi Standards, Metrology and Quality Organization (SASO) and register them.
+*   **Sub-node 5.3: License Issuance**
+    *   Output: Receive the Final Industrial License.
+    *   Validity: Valid for up to 5 Years.
+
+## Node 6: Ongoing Operational Incentives (Post-Setup)
+*   **Action:** Register with the Local Content and Government Procurement Authority (LCGPA) to get priority in government tenders, and explore financing options from the Saudi Industrial Development Fund (SIDF).

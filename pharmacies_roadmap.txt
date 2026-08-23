@@ -1,0 +1,44 @@
+# Title: Saudi Retail Pharmacy Business Roadmap
+
+## Node 1: Ownership & Legal Foundation
+*   **Sub-node 1.1: Verification of Ownership Eligibility**
+    *   Condition: The owner (or at least one partner in a company) MUST be a Saudi National licensed as a Pharmacist by the Saudi Commission for Health Specialties (SCFHS).
+*   **Sub-node 1.2: Commercial Registration (CR)**
+    *   Platform: Saudi Business Center (SBC)
+    *   Action: Issue CR for a Retail Pharmacy, ensuring the ownership rules above are met.
+
+## Node 2: Location Approval & Facility Licensing
+*   **Sub-node 2.1: Site Selection & Distance Rules**
+    *   Action: Choose a commercial location. It must adhere to municipal distance regulations (maintaining a specific minimum distance from existing pharmacies to prevent clustering). Minimum area is typically 25-30 square meters.
+*   **Sub-node 2.2: Municipal & Civil Defense Licenses**
+    *   Platform: Balady Platform & Salama Portal
+    *   Action: Issue the commercial activity license (Balady) and the safety certificate (Salama).
+*   **Sub-node 2.3: Initial Ministry of Health (MOH) Approval**
+    *   Platform: Seha Portal (بوابة صحة)
+    *   Action: Submit the CR, Balady license, and site layout to obtain preliminary approval to start facility preparation.
+
+## Node 3: Facility Preparation & Operational Readiness
+*   **Sub-node 3.1: Temperature & Storage Compliance**
+    *   Requirement: Install medical-grade refrigerators with digital temperature monitoring, and maintain ambient room temperature (usually below 25°C).
+*   **Sub-node 3.2: Security & Layout Compliance**
+    *   Requirement: Install comprehensive CCTV cameras. Ensure clear separation between the dispensing counter and the public area.
+
+## Node 4: Final MOH Licensing & Staffing
+*   **Sub-node 4.1: Appoint the Pharmacy Manager**
+    *   Condition: The manager MUST be a Saudi National Pharmacist, fully dedicated (not employed in the government sector), and hold a valid SCFHS classification and registration.
+*   **Sub-node 4.2: Final Health License Issuance**
+    *   Platform: Seha Portal (بوابة صحة)
+    *   Action: Upload manager credentials and request physical inspection. Upon passing, the final Operational Health License is issued.
+
+## Node 5: Drug Tracking System (RSD) Activation
+*   **Description:** An electronic tracking system mandated by the SFDA to ensure drug safety and combat counterfeiting.
+*   **Platform:** RSD System (نظام رصد)
+*   **Action:** Register the pharmacy in the RSD system. EVERY incoming drug package and EVERY dispensed drug must be scanned into this system via barcode.
+
+## Node 6: Controlled Substances Operations (Special Condition)
+*   **Sub-node 6.1: Specialized License**
+    *   Action: If the pharmacy intends to dispense psychotropic or narcotic drugs, a separate, highly regulated permit is required from the MOH/SFDA.
+*   **Sub-node 6.2: Security Prerequisites**
+    *   Requirement: Must install a heavy-duty bolted iron safe (خزنة حديدية) strictly dedicated to these drugs, equipped with a dedicated alarm system.
+*   **Sub-node 6.3: Dispensing Rules**
+    *   Action: Requires strict paper and electronic logging. Dispensing is only allowed via specialized electronic prescriptions (e.g., Wasfaty), with severe criminal liabilities for discrepancies.

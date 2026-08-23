@@ -1,0 +1,48 @@
+# Title: Saudi Training Centers Business Roadmap
+
+## Node 1: Scoping & Preliminary Legal Setup
+*   **Sub-node 1.1: Identify the Regulatory Authority**
+    *   Action: Determine the supervisor based on the training type:
+        - Admin, IT, & Vocational: TVTC (Technical and Vocational Training Corporation).
+        - Health & Medical: SCFHS (Saudi Commission for Health Specialties).
+        - E-Learning/Online: NELC (National eLearning Center).
+    *   Note: The rest of this roadmap focuses on TVTC, which is the most common for standard training centers.
+*   **Sub-node 1.2: Initial Approval & Commercial Registration (CR)**
+    *   Platform: TVTC Private Training Portal & Saudi Business Center (SBC)
+    *   Action: Obtain "Preliminary Approval" from TVTC to reserve the name, then issue the restricted CR for a "Training Center".
+
+## Node 2: Facility Preparation & Municipal Licensing
+*   **Sub-node 2.1: Physical Location Compliance**
+    *   Action: Rent and prepare a facility meeting TVTC strict requirements.
+    *   Requirements: Must be an independent building or dedicated floor, private entrance, equipped with surveillance cameras, and accessible for people with disabilities.
+*   **Sub-node 2.2: Municipal License**
+    *   Platform: Balady Platform
+    *   Action: Issue the commercial activity license (requires the TVTC Preliminary Approval).
+*   **Sub-node 2.3: Civil Defense Certificate**
+    *   Platform: Salama Portal
+    *   Action: Issue the safety certificate after installing required fire alarms and exits.
+
+## Node 3: Final Training License Issuance
+*   **Sub-node 3.1: Final License Request**
+    *   Platform: TVTC Private Training Portal
+    *   Action: Upload Balady license, Salama certificate, and facility photos. Request a physical inspection by TVTC.
+*   **Sub-node 3.2: License Fees & Validity**
+    *   Issuance Fee: 2,000 SAR (Valid for 5 years).
+    *   Renewal Fee: 5,000 SAR.
+
+## Node 4: Administrative & Academic Cadre
+*   **Sub-node 4.1: Appoint Center Manager**
+    *   Platform: Qiwa & TVTC Portal
+    *   Manager Requirements: Saudi National, Minimum 25 years old, Fully dedicated (Not a government employee or registered in another private job), and usually holds a Bachelor's degree. Must be officially approved by TVTC.
+*   **Sub-node 4.2: Trainer Accreditation**
+    *   Platform: TVTC / Munarh (منارة) Platform
+    *   Trainer Requirements: Must pass TVTC evaluation and testing to become a "Certified Trainer".
+    *   Operational Rule: A trainer is legally restricted to a maximum of 6 training hours per day.
+
+## Node 5: Course Accreditation & Operations
+*   **Sub-node 5.1: Regular Course Accreditation (On-site)**
+    *   Platform: Munarh (منارة) Platform
+    *   Action: All training packages and courses must be uploaded and approved before advertising or selling tickets.
+*   **Sub-node 5.2: Off-site Course Permit**
+    *   Action: If a course is held in a hotel or external venue, a specific permit must be requested.
+    *   Fee: 1,000 SAR per off-site course.

@@ -1,0 +1,43 @@
+# Title: Saudi Import & Export Business Roadmap
+
+## Node 1: Legal Foundation & Customs Activation
+*   **Sub-node 1.1: Commercial Registration (CR)**
+    *   Platform: Saudi Business Center (SBC)
+    *   Action: Issue CR with specific trading, importing, or exporting activities (General Import/Export is no longer accepted; specific sectors must be selected).
+*   **Sub-node 1.2: ZATCA & Customs Integration**
+    *   Platform: ZATCA Portal (Zakat, Tax and Customs Authority)
+    *   Action: Register for VAT and link the CR to the customs system to activate the Importer/Exporter Number (often linked directly to the CR and Unified Number).
+
+## Node 2: Product Compliance (Saber Platform)
+*   **Sub-node 2.1: HS Code Verification**
+    *   Platform: Saber / ZATCA Tariffs
+    *   Action: Search the product's Harmonized System (HS) Code to determine if it is "Regulated" (requires lab testing) or "Non-Regulated".
+*   **Sub-node 2.2: Product Certificate (PC)**
+    *   Platform: Saber
+    *   Branch A (Regulated Products): Requires a Certificate of Conformity. Must be reviewed by an approved Conformity Assessment Body (CAB). Valid for 1 year. (Fee: ~500 SAR + CAB fees + VAT).
+    *   Branch B (Non-Regulated Products): Requires a "Self-Declaration" (Importer's pledge of safety). Valid indefinitely for the same product. (Fee: Free).
+*   **Sub-node 2.3: Shipment Certificate (SC)**
+    *   Platform: Saber
+    *   Action: Request an SC for EVERY single incoming shipment before it arrives at the Saudi port. It is automatically linked to the active PC or Self-Declaration. (Fee: 350 SAR + VAT).
+
+## Node 3: Specialized Authority Permits (Conditional based on Product)
+*   **Sub-node 3.1: Food, Drugs & Cosmetics**
+    *   Platform: GHAD System (Saudi Food and Drug Authority - SFDA)
+    *   Action: Register the company, register the product, and obtain an import clearance permit.
+*   **Sub-node 3.2: Plants, Seeds & Live Animals**
+    *   Platform: Naama Portal (Ministry of Environment, Water and Agriculture - MEWA)
+    *   Action: Obtain agricultural or veterinary import permits.
+*   **Sub-node 3.3: Telecommunication & IT Equipment**
+    *   Platform: CST Portal (Communications, Space and Technology Commission)
+    *   Action: Obtain equipment approval for devices with radio frequencies or SIM cards.
+
+## Node 4: Port Clearance & Logistics (Final Stage)
+*   **Sub-node 4.1: Customs Broker Authorization**
+    *   Platform: Fasah (فسح)
+    *   Action: Importer logs into Fasah and creates an electronic authorization (تفويض إلكتروني) for a licensed Customs Broker to handle the shipment.
+*   **Sub-node 4.2: Customs Declaration (Al-Bayan)**
+    *   Platform: Fasah
+    *   Action: The broker submits the shipping documents (Commercial Invoice, Bill of Lading, Certificate of Origin, Saber SC).
+*   **Sub-node 4.3: Duty Payment & Release**
+    *   Platform: Fasah / SADAD
+    *   Action: Pay applicable customs duties and 15% VAT via SADAD. Once paid and inspected (if flagged), the customs release order (فسح جمركي) is issued.
