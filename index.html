@@ -1,61 +1,178 @@
-<!-- LOCAL DEMO — not a production build. Uses CDN React 18 + Babel standalone + Tailwind Play CDN.
+<!-- LOCAL DEMO — not a production build. Uses CDN React 18 + Babel standalone.
      Double-click to run; no build step, no server. -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>دليل تأسيس الأنشطة التجارية في السعودية</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
-<script src="https://cdn.tailwindcss.com"></script>
+<link
+  href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap"
+  rel="stylesheet" />
 <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <style>
-  html { direction: rtl; }
-  body { font-family: 'Tajawal', system-ui, -apple-system, 'Segoe UI', sans-serif; }
+  :root {
+    --ar: "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --ms: "Material Symbols Rounded";
+    --bg: #f7f8fa;
+    --surface: #fff;
+    --surface-2: #eef1f5;
+    --border: #e2e5ea;
+    --border-strong: #cfd4dc;
+    --fg: #15181d;
+    --fg-muted: #525a66;
+    --accent: #2f5fd0;
+    --accent-fg: #fff;
+    --accent-weak: #e9eefc;
+    --good: #1a8f52;
+    color-scheme: light;
+  }
+
+  * {
+    box-sizing: border-box
+  }
+
+  html {
+    direction: rtl
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--ar);
+    font-size: 18px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased
+  }
+
+  button {
+    font-family: inherit;
+    cursor: pointer
+  }
+
+  input {
+    font-family: inherit
+  }
+
+  a {
+    color: inherit
+  }
+
+  *:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 8px
+  }
+
+  .ms {
+    font-family: var(--ms);
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    white-space: nowrap;
+    direction: ltr
+  }
+
+  .tap {
+    transition: transform .08s, background .12s, border-color .12s, box-shadow .12s
+  }
+
+  .tap:active {
+    transform: scale(.985)
+  }
+
+  .tap:hover {
+    border-color: var(--border-strong);
+    background: var(--surface-2)
+  }
+
+  .fade {
+    transition: opacity .2s, transform .2s
+  }
 </style>
 
 <div id="root"></div>
 
 <script type="text/plain" id="app-source">
-const { useState } = React;
+const { useState, useEffect, useRef } = React;
 
-/* ---------- accent palette (static strings so Tailwind Play CDN picks them up) ---------- */
+/* ---------- accent palette (one hex per activity; drives --accent on the screen) ---------- */
 const ACCENT = {
-  violet: { tint:'bg-violet-100 text-violet-600', head:'text-violet-700', line:'bg-violet-200', dot:'bg-violet-500', node:'bg-violet-600', badge:'bg-violet-100 text-violet-700', hover:'hover:border-violet-300' },
-  green:  { tint:'bg-green-100 text-green-600',   head:'text-green-700',  line:'bg-green-200',  dot:'bg-green-500',  node:'bg-green-600',  badge:'bg-green-100 text-green-700',  hover:'hover:border-green-300' },
-  teal:   { tint:'bg-teal-100 text-teal-600',     head:'text-teal-700',   line:'bg-teal-200',   dot:'bg-teal-500',   node:'bg-teal-600',   badge:'bg-teal-100 text-teal-700',    hover:'hover:border-teal-300' },
-  blue:   { tint:'bg-blue-100 text-blue-600',     head:'text-blue-700',   line:'bg-blue-200',   dot:'bg-blue-500',   node:'bg-blue-600',   badge:'bg-blue-100 text-blue-700',    hover:'hover:border-blue-300' },
-  amber:  { tint:'bg-amber-100 text-amber-600',   head:'text-amber-700',  line:'bg-amber-200',  dot:'bg-amber-500',  node:'bg-amber-600',  badge:'bg-amber-100 text-amber-700',  hover:'hover:border-amber-300' },
-  red:    { tint:'bg-red-100 text-red-600',       head:'text-red-700',    line:'bg-red-200',    dot:'bg-red-500',    node:'bg-red-600',    badge:'bg-red-100 text-red-700',      hover:'hover:border-red-300' },
-  stone:  { tint:'bg-stone-200 text-stone-600',   head:'text-stone-700',  line:'bg-stone-300',  dot:'bg-stone-500',  node:'bg-stone-700',  badge:'bg-stone-200 text-stone-700',  hover:'hover:border-stone-400' },
-  pink:   { tint:'bg-pink-100 text-pink-600',     head:'text-pink-700',   line:'bg-pink-200',   dot:'bg-pink-500',   node:'bg-pink-600',   badge:'bg-pink-100 text-pink-700',    hover:'hover:border-pink-300' },
-  indigo: { tint:'bg-indigo-100 text-indigo-600', head:'text-indigo-700', line:'bg-indigo-200', dot:'bg-indigo-500', node:'bg-indigo-600', badge:'bg-indigo-100 text-indigo-700', hover:'hover:border-indigo-300' },
+  violet: "#6d47c9", green: "#2f7d5b", teal:  "#12786f", blue:   "#2f5fd0",
+  amber:  "#a5701a", red:   "#b0463f", stone: "#4f5a66", pink:   "#9a5a9e",
+  indigo: "#4a5bbf",
+};
+const tint = (hex, a) => {
+  const n = parseInt(hex.slice(1), 16);
+  return `rgba(${n >> 16},${(n >> 8) & 255},${n & 255},${a})`;
 };
 
-/* ---------- inline lucide-style icons ---------- */
-const ICONS = {
-  GraduationCap: <g><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></g>,
-  Sprout: <g><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></g>,
-  Pill: <g><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></g>,
-  Ship: <g><path d="M12 10.189V14"/><path d="M12 2v3"/><path d="M19 13V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6"/><path d="M19.38 20A11.6 11.6 0 0 0 21 14l-8.188-3.639a2 2 0 0 0-1.624 0L3 14a11.6 11.6 0 0 0 2.81 7.76"/><path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></g>,
-  Building2: <g><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></g>,
-  Factory: <g><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></g>,
-  Warehouse: <g><path d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A2 2 0 0 1 3.26 6.5l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35Z"/><path d="M6 18h12"/><path d="M6 14h12"/><path d="M6 10h12"/></g>,
-  Stethoscope: <g><path d="M11 2v2"/><path d="M5 2v2"/><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"/><path d="M8 15a6 6 0 0 0 12 0v-3"/><circle cx="20" cy="10" r="2"/></g>,
-  IdCard: <g><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="11" r="2"/><path d="M14 9h4"/><path d="M14 13h4"/><path d="M6 15h12"/></g>,
+/* ---------- Material Symbols name per activity ---------- */
+const MS_ICON = {
+  GraduationCap: "school", Sprout: "psychiatry", Pill: "medication", Ship: "directions_boat",
+  Building2: "apartment", Factory: "factory", Warehouse: "warehouse",
+  Stethoscope: "stethoscope", IdCard: "badge",
 };
 
-function Icon({ name, className }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor"
-         strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      {ICONS[name]}
-    </svg>
-  );
+/* ---------- arabic numerals + counts ---------- */
+const arNum = (n) => String(n).replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[d]);
+const arPhases = (n) =>
+  n === 0 ? "لا توجد مراحل" : n === 1 ? "مرحلة واحدة" : n === 2 ? "مرحلتان"
+  : n <= 10 ? arNum(n) + " مراحل" : arNum(n) + " مرحلة";
+
+function Icon({ name, size = 24, style }) {
+  return <span className="ms" aria-hidden="true" style={{ fontSize: size, ...style }}>{name}</span>;
 }
 
-/* ---------- data: mapped 1:1 from the 9 roadmap files ---------- */
+/* ---------- references / links ----------
+   Any node or sub-node may carry:  links: [{ label, url, type }]
+   type is optional: "video" | "doc" | "link" — inferred from the URL when omitted. */
+const linkKind = (l) => {
+  if (l.type) return l.type;
+  const u = (l.url || "").toLowerCase();
+  if (/youtube\.com|youtu\.be|vimeo\.com|\.mp4|tiktok\.com/.test(u)) return "video";
+  if (/\.pdf|\.docx?$/.test(u)) return "doc";
+  return "link";
+};
+const LINK_META = {
+  video: { icon: "play_circle", label: "فيديو" },
+  doc:   { icon: "description",  label: "مستند" },
+  link:  { icon: "open_in_new",  label: "رابط" },
+};
+
+function Links({ links, color }) {
+  if (!links || !links.length) return null;
+  return (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 12 }}>
+      {links.map((l, i) => {
+        const m = LINK_META[linkKind(l)];
+        return (
+          <a key={i} href={l.url} target="_blank" rel="noopener noreferrer" className="tap"
+             title={l.url}
+             style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "8px 13px",
+                      border: "1px solid " + tint(color, .35), borderRadius: 999,
+                      background: tint(color, .09), color, textDecoration: "none",
+                      fontSize: 15, fontWeight: 600 }}>
+            <Icon name={m.icon} size={20} />
+            <span>{l.label || m.label}</span>
+          </a>
+        );
+      })}
+    </div>
+  );
+}
+/* ---------- data: mapped 1:1 from the 9 roadmap files ----------
+   References: any activity, node (phase) or sub-node may carry
+     links: [{ label: "شرح بالفيديو", url: "https://…", type: "video" }]
+   `type` is optional — "video" | "doc" | "link", inferred from the URL when omitted. */
 const ACTIVITIES = [
   {
     id: "training-centers",
@@ -485,6 +602,7 @@ const ACTIVITIES = [
     id: "muqeem-platform",
     titleAr: "منصة مقيم",
     descAr: "البوابة الإلكترونية الرسمية المرتبطة بمديرية الجوازات لإدارة شؤون الوافدين رقميًا، توفيرًا للوقت والجهد.",
+    links: [{ label: "بوابة مقيم الرسمية", url: "https://muqeem.sa" }],
     icon: "IdCard", accent: "indigo",
     nodes: [
       { title: "المرحلة ١: نظرة عامة على المنصة ونطاقها", subnodes: [
@@ -518,166 +636,288 @@ const ACTIVITIES = [
     ],
   },
 ];
-
 /* ---------- components ---------- */
 
-function DashboardCard({ activity, onOpen }) {
-  const a = ACCENT[activity.accent];
+function TopBar({ showBack, onBack, onHome, onSearch }) {
   return (
-    <button
-      onClick={() => onOpen(activity.id)}
-      aria-label={`فتح خارطة طريق ${activity.titleAr}`}
-      className={`group text-right bg-white border border-slate-200 rounded-2xl p-6 shadow-sm
-                  transition-all duration-200 hover:-translate-y-1 hover:shadow-md ${a.hover}
-                  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300`}
-    >
-      <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-4 ${a.tint}`}>
-        <Icon name={activity.icon} className="w-7 h-7" />
-      </div>
-      <h3 className="text-lg font-bold text-slate-800 mb-1">{activity.titleAr}</h3>
-      <p className="text-sm text-slate-500 leading-relaxed">{activity.descAr}</p>
-      <span className={`inline-block mt-4 text-sm font-medium ${a.head}`}>عرض خارطة الطريق ←</span>
-    </button>
+    <header style={{ position: "sticky", top: 0, zIndex: 20, height: 66, display: "flex", alignItems: "center",
+                     gap: 10, padding: "0 16px", background: "var(--surface)", borderBottom: "1px solid var(--border)" }}>
+      {showBack && (
+        <button onClick={onBack} className="tap" aria-label="رجوع"
+                style={{ height: 48, display: "flex", alignItems: "center", gap: 8, padding: "0 16px",
+                         border: "1px solid var(--border-strong)", borderRadius: 12, background: "var(--surface)",
+                         color: "var(--fg)", fontSize: 17, fontWeight: 700 }}>
+          <Icon name="arrow_forward" size={26} />رجوع
+        </button>
+      )}
+      <button onClick={onHome} style={{ display: "flex", alignItems: "center", gap: 10, border: 0, background: "transparent", padding: 0 }}>
+        <div style={{ width: 40, height: 40, borderRadius: 11, background: "var(--accent)", display: "flex",
+                      alignItems: "center", justifyContent: "center", color: "var(--accent-fg)", fontWeight: 800, fontSize: 20 }}>د</div>
+        <span style={{ fontWeight: 800, fontSize: 19, letterSpacing: "-.01em", color: "var(--fg)" }}>دليل التأسيس</span>
+      </button>
+      <div style={{ flex: 1 }}></div>
+      <button onClick={onSearch} className="tap"
+              style={{ height: 48, display: "flex", alignItems: "center", gap: 8, padding: "0 16px",
+                       border: "1px solid var(--border-strong)", borderRadius: 12, background: "var(--surface)",
+                       color: "var(--fg-muted)", fontWeight: 700, fontSize: 16 }}>
+        <Icon name="search" size={24} />بحث
+      </button>
+    </header>
   );
 }
 
-function Dashboard({ onOpen }) {
+function Home({ onOpen, onSearch }) {
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
-      <header className="text-center mb-10">
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-800 mb-3">
-          دليل تأسيس الأنشطة التجارية في السعودية
-        </h1>
-        <p className="text-slate-500 max-w-2xl mx-auto">
-          خرائط طريق تفصيلية خطوة بخطوة لترخيص وتشغيل تسعة أنشطة تجارية، مع المنصات والإجراءات والمتطلبات لكل مرحلة.
-        </p>
-      </header>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {ACTIVITIES.map((act) => (
-          <DashboardCard key={act.id} activity={act} onOpen={onOpen} />
-        ))}
+    <div style={{ maxWidth: 860, margin: "0 auto", padding: "40px 20px 64px" }}>
+      <h1 style={{ fontSize: 34, fontWeight: 800, letterSpacing: "-.02em", margin: "0 0 12px", textAlign: "center" }}>
+        دليل تأسيس الأنشطة التجارية في السعودية
+      </h1>
+      <p style={{ color: "var(--fg-muted)", textAlign: "center", margin: "0 auto 28px", maxWidth: 620, fontSize: 18 }}>
+        خرائط طريق تفصيلية خطوة بخطوة لترخيص وتشغيل تسعة أنشطة تجارية، مع المنصات والإجراءات والمتطلبات لكل مرحلة.
+      </p>
+
+      <button onClick={onSearch} className="tap"
+              style={{ width: "100%", height: 72, display: "flex", alignItems: "center", gap: 14, padding: "0 22px",
+                       border: "2px solid var(--border-strong)", borderRadius: 18, background: "var(--surface)",
+                       color: "var(--fg-muted)", fontSize: 20, boxShadow: "0 2px 4px rgba(16,24,40,.04)" }}>
+        <Icon name="search" size={32} style={{ color: "var(--accent)" }} />
+        <span style={{ flex: 1, textAlign: "start" }}>ابحث عن نشاط أو مرحلة أو منصة…</span>
+      </button>
+
+      <div style={{ fontSize: 16, fontWeight: 800, color: "var(--fg-muted)", margin: "38px 0 14px" }}>الأنشطة</div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(320px,1fr))", gap: 14 }}>
+        {ACTIVITIES.map((act) => {
+          const c = ACCENT[act.accent];
+          return (
+            <button key={act.id} onClick={() => onOpen(act.id)} className="tap"
+                    aria-label={`فتح خارطة طريق ${act.titleAr}`}
+                    style={{ display: "flex", alignItems: "flex-start", gap: 16, padding: 20, minHeight: 96,
+                             border: "1px solid var(--border)", borderRadius: 16, background: "var(--surface)", textAlign: "start" }}>
+              <span style={{ width: 56, height: 56, flex: "0 0 auto", borderRadius: 14, background: tint(c, .13),
+                             color: c, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <Icon name={MS_ICON[act.icon]} size={32} />
+              </span>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ fontWeight: 700, fontSize: 19, lineHeight: 1.25 }}>{act.titleAr}</div>
+                <div style={{ color: "var(--fg-muted)", fontSize: 15.5, marginTop: 5, lineHeight: 1.5 }}>{act.descAr}</div>
+                <div style={{ color: c, fontSize: 14.5, fontWeight: 700, marginTop: 8 }}>{arPhases(act.nodes.length)}</div>
+              </div>
+            </button>
+          );
+        })}
       </div>
     </div>
   );
 }
 
-function SubNodeCard({ sub, accent }) {
-  const a = ACCENT[accent];
+function SubNodeCard({ sub, color }) {
   return (
-    <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
-      <h4 className="font-bold text-slate-800 mb-2">{sub.title}</h4>
+    <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 14, padding: 18 }}>
+      <h4 style={{ fontWeight: 700, fontSize: 18, margin: "0 0 10px", color: "var(--fg)" }}>{sub.title}</h4>
 
       {sub.platform && (
-        <span className={`inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full mb-2 ${a.badge}`}>
-          <span className="opacity-70">المنصة</span>
-          <span>{sub.platform}</span>
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 14, fontWeight: 600,
+                       padding: "5px 11px", borderRadius: 999, background: tint(color, .12), color,
+                       marginBottom: 10 }}>
+          <Icon name="apps" size={18} />{sub.platform}
         </span>
       )}
 
       {sub.action && (
-        <p className="text-sm text-slate-600 leading-relaxed mb-2">
-          <span className="text-slate-400 font-medium">الإجراء: </span>
-          {sub.action}
+        <p style={{ fontSize: 16.5, color: "var(--fg-muted)", lineHeight: 1.75, margin: "0 0 8px" }}>
+          <span style={{ fontWeight: 700 }}>الإجراء: </span>{sub.action}
         </p>
       )}
 
       {sub.requirements && sub.requirements.length > 0 && (
-        <div className="mt-2">
-          <div className="text-slate-400 font-medium text-sm mb-1.5">المتطلبات:</div>
-          <ul className="space-y-1.5">
+        <div style={{ marginTop: 12 }}>
+          <div style={{ fontWeight: 700, fontSize: 15, color: "var(--fg-muted)", marginBottom: 8 }}>المتطلبات:</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             {sub.requirements.map((r, i) => (
-              <li key={i} className="flex gap-2 text-sm text-slate-600 leading-relaxed">
-                <span className={`mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 ${a.dot}`}></span>
+              <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10, fontSize: 16.5,
+                                    color: "var(--fg-muted)", lineHeight: 1.7 }}>
+                <Icon name="check_circle" size={22} style={{ color: "var(--good)", flex: "0 0 auto", marginTop: 3 }} />
                 <span>{r}</span>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       )}
+
+      <Links links={sub.links} color={color} />
     </div>
   );
 }
 
-function Roadmap({ activity, onBack }) {
-  const a = ACCENT[activity.accent];
-  return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <div className="flex items-center justify-between gap-4 mb-8 flex-wrap">
-        <div className="flex items-center gap-3">
-          <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${a.tint}`}>
-            <Icon name={activity.icon} className="w-6 h-6" />
-          </div>
+function Article({ activity, onOpen }) {
+  const c = ACCENT[activity.accent];
+  const [feedback, setFeedback] = useState(null);
+  const related = ACTIVITIES.filter((a) => a.id !== activity.id).slice(0, 2);
+  const jump = (i) => {
+    const el = document.getElementById("phase-" + i);
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 84, behavior: "smooth" });
+  };
+
+    return (
+      <div style={{ maxWidth: 860, margin: "0 auto", padding: "34px 22px 80px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 22 }}>
+          <span style={{ width: 64, height: 64, flex: "0 0 auto", borderRadius: 16, background: tint(c, .13),
+                        color: c, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <Icon name={MS_ICON[activity.icon]} size={38} />
+          </span>
           <div>
-            <h2 className="text-2xl font-extrabold text-slate-800">{activity.titleAr}</h2>
-            <p className="text-sm text-slate-500">{activity.descAr}</p>
+            <h1 style={{ fontSize: 30, fontWeight: 800, letterSpacing: "-.02em", margin: 0 }}>{activity.titleAr}</h1>
+            <div style={{ color: "var(--fg-muted)", fontSize: 17, marginTop: 2 }}>{arPhases(activity.nodes.length)}</div>
           </div>
         </div>
-        <button
-          onClick={onBack}
-          aria-label="الرجوع إلى اللوحة الرئيسية"
-          className="text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-lg px-4 py-2
-                     hover:bg-slate-50 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-300"
-        >
-           رجوع للوحة الرئيسية ←
-        </button>
-      </div>
 
-      {/* vertical timeline: connecting line on the right (RTL) */}
-      <div className="relative pr-6 sm:pr-8">
-        <div className={`absolute top-2 bottom-2 right-[7px] sm:right-[9px] w-0.5 ${a.line}`}></div>
+        <div style={{ border: "1px solid var(--border)", borderInlineStart: "5px solid " + c, background: tint(c, .07),
+                      borderRadius: 14, padding: "18px 20px", margin: "0 0 22px", display: "flex", gap: 14,
+                      color: "var(--fg-muted)", fontSize: 17.5, lineHeight: 1.7 }}>
+          <Icon name="lightbulb" size={28} style={{ color: c, flex: "0 0 auto" }} />
+          <div><strong style={{ color: "var(--fg)" }}>باختصار: </strong>{activity.descAr}</div>
+        </div>
 
-        <div className="space-y-8">
-          {activity.nodes.map((node, ni) => (
-            <div key={ni} className="relative">
-              {/* connector dot */}
-              <span className={`absolute -right-6 sm:-right-8 top-3 w-4 h-4 rounded-full border-2 border-white ${a.dot}`}></span>
+        <Links links={activity.links} color={c} />
 
-              {/* main node pill */}
-              <div className={`inline-block text-white font-bold text-sm rounded-lg px-4 py-2 mb-4 shadow-sm ${a.node}`}>
-                {node.title}
-              </div>
-
-              {/* sub-nodes */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {node.subnodes.map((sub, si) => (
-                  <SubNodeCard key={si} sub={sub} accent={activity.accent} />
-                ))}
-              </div>
-            </div>
+        {/* phase quick-jump */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, margin: "22px 0 30px" }}>
+          {activity.nodes.map((n, i) => (
+            <button key={i} onClick={() => jump(i)} className="tap"
+                    style={{ padding: "8px 14px", border: "1px solid var(--border)", borderRadius: 999,
+                            background: "var(--surface)", color: "var(--fg-muted)", fontSize: 15, fontWeight: 600 }}>
+              {arNum(i + 1)}. {n.title.replace(/^المرحلة\s+\S+:\s*/, "")}
+            </button>
           ))}
         </div>
+
+        {/* vertical timeline: connecting line runs down the start (right in RTL) edge */}
+        <div style={{ position: "relative", paddingInlineStart: 30 }}>
+          <div style={{ position: "absolute", top: 8, bottom: 8, insetInlineStart: 8, width: 2, background: tint(c, .3) }}></div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 34 }}>
+            {activity.nodes.map((node, ni) => (
+              <div key={ni} id={"phase-" + ni} style={{ position: "relative", scrollMarginTop: 84 }}>
+                <span style={{ position: "absolute", insetInlineStart: -30, top: 10, width: 18, height: 18,
+                              borderRadius: 999, background: c, border: "3px solid var(--bg)" }}></span>
+                <div style={{ display: "inline-block", color: "#fff", fontWeight: 700, fontSize: 16.5,
+                              borderRadius: 12, padding: "9px 16px", marginBottom: 4, background: c }}>
+                  {node.title}
+                </div>
+                <Links links={node.links} color={c} />
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(300px,1fr))", gap: 12, marginTop: 14 }}>
+                  {node.subnodes.map((sub, si) => <SubNodeCard key={si} sub={sub} color={c} />)}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+}
+
+/* search across activities, phases and sub-nodes */
+function searchAll(q) {
+  const s = q.trim();
+  if (!s) return [];
+  const hit = (t) => !!t && t.indexOf(s) !== -1;
+  const out = [];
+  ACTIVITIES.forEach((act) => {
+    if (hit(act.titleAr) || hit(act.descAr)) out.push({ act: act, phase: null, title: act.titleAr, sub: act.descAr });
+    act.nodes.forEach((node, ni) => {
+      if (hit(node.title)) out.push({ act: act, phase: ni, title: node.title, sub: act.titleAr });
+      node.subnodes.forEach((sn) => {
+        if (hit(sn.title) || hit(sn.platform) || hit(sn.action) || (sn.requirements || []).some(hit))
+          out.push({ act: act, phase: ni, title: sn.title, sub: act.titleAr + " — " + node.title });
+      });
+    });
+  });
+  return out.slice(0, 40);
+}
+
+function Search({ onOpen }) {
+  const [q, setQ] = useState("");
+  const results = searchAll(q);
+  return (
+    <div style={{ maxWidth: 860, margin: "0 auto", padding: "32px 20px 64px" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 14, height: 72, padding: "0 22px",
+                    border: "2px solid var(--accent)", borderRadius: 18, background: "var(--surface)", marginBottom: 24 }}>
+        <Icon name="search" size={32} style={{ color: "var(--accent)" }} />
+        <input autoFocus placeholder="ابحث عن نشاط أو مرحلة أو منصة…" value={q} onChange={(e) => setQ(e.target.value)}
+               style={{ flex: 1, border: 0, outline: 0, background: "transparent", color: "var(--fg)", fontSize: 20 }} />
+      </div>
+      <div style={{ color: "var(--fg-muted)", fontSize: 16, marginBottom: 14 }}>
+        {q.trim() ? (results.length ? arNum(results.length) + " نتيجة" : "لا توجد نتائج") : "اكتب كلمة للبحث في كل خرائط الطريق"}
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+        {results.map((r, i) => {
+          const c = ACCENT[r.act.accent];
+          return (
+            <button key={i} onClick={() => onOpen(r.act.id, r.phase)} className="tap"
+                    style={{ display: "flex", alignItems: "center", gap: 16, width: "100%", padding: 20, minHeight: 78,
+                             border: "1px solid var(--border)", borderRadius: 16, background: "var(--surface)", textAlign: "start" }}>
+              <span style={{ width: 48, height: 48, flex: "0 0 auto", borderRadius: 12, background: tint(c, .13),
+                             color: c, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <Icon name={MS_ICON[r.act.icon]} size={26} />
+              </span>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ fontWeight: 700, fontSize: 18.5, lineHeight: 1.3 }}>{r.title}</div>
+                <div style={{ color: "var(--fg-muted)", fontSize: 15, marginTop: 3 }}>{r.sub}</div>
+              </div>
+              <Icon name="chevron_left" size={28} style={{ color: "var(--border-strong)" }} />
+            </button>
+          );
+        })}
       </div>
     </div>
   );
 }
 
 function App() {
-  const [view, setView] = useState("dashboard");
+  const [scr, setScr] = useState("home");
   const [activeId, setActiveId] = useState(null);
-  const [mounted, setMounted] = useState(true);
-
-  const go = (nextView, id) => {
-    setMounted(false);
-    setTimeout(() => {
-      if (id !== undefined) setActiveId(id);
-      setView(nextView);
-      setMounted(true);
-      try { window.scrollTo(0, 0); } catch (e) {}
-    }, 200);
-  };
+  const [pendingPhase, setPendingPhase] = useState(null);
+  const history = useRef([]);
 
   const active = ACTIVITIES.find((x) => x.id === activeId);
 
-  return (
-    <div className={`min-h-screen bg-slate-50 transition-all duration-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
-      {view === "dashboard" || !active
-        ? <Dashboard onOpen={(id) => go("roadmap", id)} />
-        : <Roadmap activity={active} onBack={() => go("dashboard")} />}
+  const go = (next) => {
+    if (next !== scr) history.current.push(scr);
+    setScr(next);
+    window.scrollTo(0, 0);
+  };
+  const openArticle = (id, phase) => {
+    setActiveId(id);
+    setPendingPhase(phase === undefined ? null : phase);
+    go("article");
+  };
+  const back = () => { setScr(history.current.pop() || "home"); window.scrollTo(0, 0); };
 
-      <footer className="mt-16 border-t border-slate-200 bg-white">
-        <div className="max-w-6xl mx-auto px-4 py-6 text-center text-sm text-slate-500 leading-relaxed">
-          <p>دليل توضيحي لتأسيس الأنشطة التجارية — البيانات للأغراض التدريبية وقابلة للتحديث.</p>
-          <p className="mt-1"> 2026@— أعد بكل حب بواسطة عمران ومصطفى ❤️. جميع الحقوق محفوظة.</p>
+  // scroll to the phase a search result pointed at, once the article is on screen
+  useEffect(() => {
+    if (scr !== "article" || pendingPhase === null) return;
+    const el = document.getElementById("phase-" + pendingPhase);
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 84 });
+    setPendingPhase(null);
+  }, [scr, activeId, pendingPhase]);
+
+  // accent follows the open activity
+  useEffect(() => {
+    document.documentElement.style.setProperty(
+      "--accent", active && scr === "article" ? ACCENT[active.accent] : "#2f5fd0");
+  }, [active, scr]);
+
+  return (
+    <div style={{ minHeight: "100vh", background: "var(--bg)" }}>
+      <TopBar showBack={scr !== "home"} onBack={back} onHome={() => go("home")} onSearch={() => go("search")} />
+      {scr === "search" ? <Search onOpen={openArticle} />
+        : scr === "article" && active ? <Article activity={active} onOpen={openArticle} />
+        : <Home onOpen={openArticle} onSearch={() => go("search")} />}
+
+      <footer style={{ marginTop: 40, borderTop: "1px solid var(--border)", background: "var(--surface)" }}>
+        <div style={{ maxWidth: 860, margin: "0 auto", padding: "24px 20px", textAlign: "center",
+                      color: "var(--fg-muted)", fontSize: 15.5, lineHeight: 1.8 }}>
+          <p style={{ margin: 0 }}>دليل توضيحي لتأسيس الأنشطة التجارية — البيانات للأغراض التدريبية وقابلة للتحديث.</p>
+          <p style={{ margin: "4px 0 0" }}>© 2026 — أعد بكل حب بواسطة عمران ومصطفى ❤️. جميع الحقوق محفوظة.</p>
         </div>
       </footer>
     </div>
@@ -688,14 +928,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 </script>
 
 <!-- Bootstrap: transform the JSX source with the CLASSIC runtime so it uses the
-     global React (UMD) instead of `import` from "react/jsx-runtime" (which breaks
-     in a plain script with no module system). -->
+     global React (UMD) instead of `import` from "react/jsx-runtime". -->
 <script>
   (function () {
     var src = document.getElementById("app-source").textContent;
-    var out = Babel.transform(src, {
-      presets: [["react", { runtime: "classic" }]]
-    }).code;
+    var out = Babel.transform(src, { presets: [["react", { runtime: "classic" }]] }).code;
     var s = document.createElement("script");
     s.textContent = out;
     document.body.appendChild(s);
