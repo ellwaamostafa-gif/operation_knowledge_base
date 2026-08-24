@@ -1,0 +1,26 @@
+# Title: Saudi Muqeem Platform Roadmap
+
+## Node 1: Platform Overview & Scope
+*   **Description:** The official e-portal linked to the General Directorate of Passports (Jawazat), designed to help employers manage expatriate affairs digitally, saving time and effort.
+*   **Target Audience:** Employers and Companies in the Public and Private sectors.
+*   **Sub-node 1.1: Core Services (Jawazat Operations)**
+    *   Action: Online Iqama (Residency ID) renewals, issuance of Exit/Re-entry Visas (خروج وعودة), and Final Exit Visas (خروج نهائي).
+*   **Sub-node 1.2: Inquiries & Reporting**
+    *   Action: Querying resident data, verifying work permits, and printing official multi-purpose reports for the establishment.
+
+## Node 2: Registration & Setup Workflow
+*   **Sub-node 2.1: Request Initiation**
+    *   Platform: Muqeem Official Portal
+    *   Action: Access the portal and navigate to the registration section. Choose "New Request" (طلب جديد) to begin, or "Existing Request" (طلب حالي) to continue a saved application.
+*   **Sub-node 2.2: Data Entry & Validation**
+    *   Action: Fill in the mandatory establishment details.
+    *   Requirements: Must provide the Ministry of Interior (MOI) Number (رقم وزارة الداخلية / الرقم الموحد 700) and the Commercial Registration (CR) Number (رقم السجل التجاري).
+*   **Sub-node 2.3: Package Selection**
+    *   Action: Select the appropriate subscription package (Baqat) tailored to the establishment's size and expected volume of transactions (e.g., Muqeem Standard vs. Muqeem Comprehensive).
+
+## Node 3: Payment & Account Activation
+*   **Sub-node 3.1: Fee Settlement**
+    *   Action: Pay the selected package subscription fees through the available official payment channels (typically via SADAD).
+*   **Sub-node 3.2: Final Activation**
+    *   Action: Check the registered email for a verification link.
+    *   Output: Click the link to activate the account. The platform is now fully operational and ready for managing resident employees.

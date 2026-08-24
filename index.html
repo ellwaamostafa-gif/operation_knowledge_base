@@ -30,6 +30,7 @@ const ACCENT = {
   red:    { tint:'bg-red-100 text-red-600',       head:'text-red-700',    line:'bg-red-200',    dot:'bg-red-500',    node:'bg-red-600',    badge:'bg-red-100 text-red-700',      hover:'hover:border-red-300' },
   stone:  { tint:'bg-stone-200 text-stone-600',   head:'text-stone-700',  line:'bg-stone-300',  dot:'bg-stone-500',  node:'bg-stone-700',  badge:'bg-stone-200 text-stone-700',  hover:'hover:border-stone-400' },
   pink:   { tint:'bg-pink-100 text-pink-600',     head:'text-pink-700',   line:'bg-pink-200',   dot:'bg-pink-500',   node:'bg-pink-600',   badge:'bg-pink-100 text-pink-700',    hover:'hover:border-pink-300' },
+  indigo: { tint:'bg-indigo-100 text-indigo-600', head:'text-indigo-700', line:'bg-indigo-200', dot:'bg-indigo-500', node:'bg-indigo-600', badge:'bg-indigo-100 text-indigo-700', hover:'hover:border-indigo-300' },
 };
 
 /* ---------- inline lucide-style icons ---------- */
@@ -42,6 +43,7 @@ const ICONS = {
   Factory: <g><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></g>,
   Warehouse: <g><path d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A2 2 0 0 1 3.26 6.5l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35Z"/><path d="M6 18h12"/><path d="M6 14h12"/><path d="M6 10h12"/></g>,
   Stethoscope: <g><path d="M11 2v2"/><path d="M5 2v2"/><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"/><path d="M8 15a6 6 0 0 0 12 0v-3"/><circle cx="20" cy="10" r="2"/></g>,
+  IdCard: <g><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="11" r="2"/><path d="M14 9h4"/><path d="M14 13h4"/><path d="M6 15h12"/></g>,
 };
 
 function Icon({ name, className }) {
@@ -53,7 +55,7 @@ function Icon({ name, className }) {
   );
 }
 
-/* ---------- data: mapped 1:1 from the 8 roadmap files ---------- */
+/* ---------- data: mapped 1:1 from the 9 roadmap files ---------- */
 const ACTIVITIES = [
   {
     id: "training-centers",
@@ -478,6 +480,43 @@ const ACTIVITIES = [
       ]},
     ],
   },
+
+  {
+    id: "muqeem-platform",
+    titleAr: "منصة مقيم",
+    descAr: "البوابة الإلكترونية الرسمية المرتبطة بمديرية الجوازات لإدارة شؤون الوافدين رقميًا، توفيرًا للوقت والجهد.",
+    icon: "IdCard", accent: "indigo",
+    nodes: [
+      { title: "المرحلة ١: نظرة عامة على المنصة ونطاقها", subnodes: [
+        { title: "نظرة عامة على المنصة",
+          action: "البوابة الإلكترونية الرسمية المرتبطة بمديرية الجوازات العامة (الجوازات)، المصممة لمساعدة أصحاب العمل على إدارة شؤون الوافدين رقميًا، مما يوفّر الوقت والجهد." },
+        { title: "الجمهور المستهدف",
+          action: "أصحاب العمل والشركات في القطاعين العام والخاص." },
+        { title: "الخدمات الأساسية (عمليات الجوازات)",
+          action: "تجديد الإقامة (بطاقة مقيم) وإصدار تأشيرات الخروج والعودة وتأشيرات الخروج النهائي عبر الإنترنت." },
+        { title: "الاستعلامات والتقارير",
+          action: "الاستعلام عن بيانات المقيمين والتحقق من رخص العمل وطباعة التقارير الرسمية متعددة الأغراض للمنشأة." },
+      ]},
+      { title: "المرحلة ٢: مسار التسجيل والإعداد", subnodes: [
+        { title: "بدء الطلب",
+          platform: "بوابة منصة مقيم الرسمية",
+          action: "الدخول إلى البوابة والتوجه إلى قسم التسجيل. اختر «طلب جديد» للبدء، أو «طلب حالي» لمتابعة طلب محفوظ." },
+        { title: "إدخال البيانات والتحقق",
+          action: "تعبئة تفاصيل المنشأة الإلزامية.",
+          requirements: ["توفير رقم وزارة الداخلية / الرقم الموحّد ٧٠٠", "توفير رقم السجل التجاري"] },
+        { title: "اختيار الباقة",
+          action: "اختيار باقة الاشتراك (الباقات) المناسبة لحجم المنشأة وحجم المعاملات المتوقع (مثل: مقيم القياسي مقابل مقيم الشامل)." },
+      ]},
+      { title: "المرحلة ٣: الدفع وتفعيل الحساب", subnodes: [
+        { title: "سداد الرسوم",
+          platform: "سداد SADAD",
+          action: "سداد رسوم اشتراك الباقة المختارة عبر قنوات الدفع الرسمية المتاحة (عادةً عبر سداد)." },
+        { title: "التفعيل النهائي",
+          action: "التحقق من البريد الإلكتروني المسجّل لرابط التحقق.",
+          requirements: ["النقر على الرابط لتفعيل الحساب. تصبح المنصة جاهزة للتشغيل الكامل لإدارة موظفي المنشأة المقيمين."] },
+      ]},
+    ],
+  },
 ];
 
 /* ---------- components ---------- */
@@ -510,7 +549,7 @@ function Dashboard({ onOpen }) {
           دليل تأسيس الأنشطة التجارية في السعودية
         </h1>
         <p className="text-slate-500 max-w-2xl mx-auto">
-          خرائط طريق تفصيلية خطوة بخطوة لترخيص وتشغيل ثمانية أنشطة تجارية، مع المنصات والإجراءات والمتطلبات لكل مرحلة.
+          خرائط طريق تفصيلية خطوة بخطوة لترخيص وتشغيل تسعة أنشطة تجارية، مع المنصات والإجراءات والمتطلبات لكل مرحلة.
         </p>
       </header>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
