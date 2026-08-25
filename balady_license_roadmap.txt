@@ -1,0 +1,26 @@
+# Title: Saudi Balady License & Qiwa Integration (رخصة البلدية - ربط قوى وتأسيس)
+
+## Branch 1: Adding Location via Balady License (إضافة موقع المنشأة بترخيص البلدية)
+*   **Description:** The process of linking the physical municipal license to the Qiwa platform to prove the facility's operational status.
+*   **Node 1.1: Platform Navigation**
+    *   Platform: Qiwa Portal
+    *   Action: Log in to the business account, navigate to "Services" (الخدمات), and select "Instant Work Visas" (تأشيرات العمل الفورية)[cite: 13, 14].
+*   **Node 1.2: Fetching Municipal Data**
+    *   Action: In the location management section, choose the option "Add location with municipal license" (أضف الموقع بترخيص البلدية)[cite: 13, 14].
+    *   System Action: The system will automatically fetch the registered address and license details from the Ministry of Municipal and Rural Affairs and Housing (MOMRA)[cite: 13, 14].
+*   **Node 1.3: Verification & Confirmation**
+    *   Action: Review the fetched geographical coordinates, license number, and activities[cite: 13, 14].
+    *   Action: Check the acknowledgment box confirming the accuracy of the data, then click "Add Facility Location" (إضافة موقع المنشأة)[cite: 13, 14]. A success message will appear confirming the addition[cite: 13, 14].
+
+## Branch 2: Activating Foundation Category (تفعيل فئة التأسيس لزيادة الرصيد)
+*   **Description:** Utilizing the verified location to activate the foundation category, which grants the company its initial visa recruitment quota.
+*   **Node 2.1: Category Selection**
+    *   Action: Return to the "Permanent Work Visas" (تأشيرات العمل الدائمة) dashboard[cite: 13, 14].
+    *   Action: Click on the link to "Activate Foundation Category" (تفعيل فئة التأسيس) and select "Category 1" (الفئة 1)[cite: 13, 14].
+*   **Node 2.2: Data Entry & Agreement**
+    *   Action: Enter the required contact details for the client, including First Name, Last Name, Email, and Mobile Number[cite: 13, 14].
+    *   Action: Agree to the terms and conditions of the Qiwa platform[cite: 13, 14].
+*   **Node 2.3: Finalizing & Checking Quota**
+    *   Action: Review the summary (Note: The total amount for this specific activation is Free / مجانًا) and click Submit (إرسال)[cite: 13, 14].
+    *   Action: Copy the generated Request Number for your records[cite: 13, 14].
+    *   Output: Go back to the "Permanent Work Visas" page to verify that the "Recruitment Balance" (رصيد الاستقطاب) has been successfully updated and increased[cite: 13, 14].
