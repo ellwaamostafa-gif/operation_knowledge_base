@@ -121,7 +121,7 @@ const MS_ICON = {
   GraduationCap: "school", Sprout: "psychiatry", Pill: "medication", Ship: "directions_boat",
   Building2: "apartment", Factory: "factory", Warehouse: "warehouse",
   Stethoscope: "stethoscope", IdCard: "badge", ShieldCheck: "verified_user", Store: "store",
-  MapPin: "location_on", FlaskConical: "science", Percent: "percent",
+  MapPin: "location_on", FlaskConical: "science", Percent: "percent", Handshake: "handshake",
 };
 
 /* ---------- arabic numerals + counts ---------- */
@@ -947,6 +947,43 @@ const ACTIVITIES = [
       },
     ],
   },
+
+  {
+    id: "ajeer-platform",
+    titleAr: "منصة أجير",
+    descAr: "تنظيم التبادل المؤقت للعمالة بين المنشآت بطريقة نظامية وتسهيل إجراءات الإعارة.",
+    links: [{ label: "بوابة أجير", url: "https://www.ajeer.com.sa" }],
+    icon: "Handshake", accent: "blue",
+    nodes: [
+      { title: "الخطوة ١: الاشتراطات المسبقة (Prerequisites & Compliance)", subnodes: [
+        { title: "قاعدة إنشاء الطلب",
+          action: "يجب أن يتم بدء طلب العقد من قبل الكفيل الحالي، وليس من قبل المنشأة المستضيفة.",
+          requirements: [] },
+        { title: "حالة نطاقات",
+          action: "يجب أن تكون منشأة الكفيل ملتزمة، وألا تكون حالة 'نطاقات' للمنشأة في النطاق الأحمر.",
+          requirements: [] },
+      ]},
+      { title: "الخطوة ٢: سير عمل إنشاء العقد", subnodes: [
+        { title: "إصدار التصريح",
+          platform: "بوابة أجير",
+          action: "الانتقال إلى صفحة التصاريح والنقر على 'إصدار تصريح'.",
+          requirements: [] },
+        { title: "إدخال البيانات",
+          action: "اختيار 'عقد أجير' من الخيارات المتاحة، وتعبئة كافة البيانات المطلوبة بخصوص العمال وتفاصيل الاتفاقية.",
+          requirements: [] },
+      ]},
+      { title: "الخطوة ٣: موافقة الطرف الثاني (المنشأة المستقطبة)", subnodes: [
+        { title: "مراجعة المنشأة المستقطبة",
+          action: "بمجرد إرسال البيانات من قبل الكفيل، يُرسل الطلب تلقائياً لمدير المنشأة المستضيفة للموافقة عليه.",
+          requirements: ["يمكن لمدير المنشأة المستضيفة العثور على هذا الطلب المعلق في قسم 'التنبيهات'"] },
+      ]},
+      { title: "الخطوة ٤: الدفع والإصدار النهائي", subnodes: [
+        { title: "تسوية الرسوم",
+          action: "بعد موافقة الطرف الثاني رسمياً على الطلب، ينتقل مسار العمل إلى مرحلة الدفع.",
+          requirements: ["دفع رسوم العقد المطلوبة لإنهاء وتفعيل عقد أجير بشكل نهائي"] },
+      ]},
+    ],
+  },
 ];
 /* ---------- components ---------- */
 
@@ -985,7 +1022,7 @@ function Home({ onOpen, onSearch }) {
         دليل تأسيس الأنشطة التجارية في السعودية
       </h1>
       <p style={{ color: "var(--fg-muted)", textAlign: "center", margin: "0 auto 28px", maxWidth: 620, fontSize: 18 }}>
-        خرائط طريق تفصيلية خطوة بخطوة لترخيص وتشغيل أربعة عشر نشاطًا تجاريًا، مع المنصات والإجراءات والمتطلبات لكل مرحلة.
+        خرائط طريق تفصيلية خطوة بخطوة لترخيص وتشغيل خمسة عشر نشاطًا تجاريًا، مع المنصات والإجراءات والمتطلبات لكل مرحلة.
       </p>
 
       <button onClick={onSearch} className="tap"

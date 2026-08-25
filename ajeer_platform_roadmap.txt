@@ -1,0 +1,26 @@
+# Title: Saudi Ajeer Platform Roadmap (منصة أجير)
+
+## Node 1: Prerequisites & Compliance (الاشتراطات المسبقة)
+*   **Description:** Ajeer organizes the temporary exchange of labor between facilities legally.
+*   **Sub-node 1.1: Request Initiation Rule**
+    *   Condition: The Ajeer contract request MUST be initiated by the current Sponsor (الكفيل), not by the hosting facility[cite: 7].
+*   **Sub-node 1.2: Nitaqat Status (نطاق المنشأة)**
+    *   Condition: The sponsor's facility must be compliant and its Nitaqat status cannot be in the "Red" zone (نطاق أحمر)[cite: 7].
+
+## Node 2: Contract Creation Workflow (إنشاء العقد)
+*   **Platform:** Ajeer Portal
+*   **Sub-node 2.1: Issuing the Permit**
+    *   Action: Navigate to the "Permits" page (صفحة التصاريح) and click on "Issue Permit" (إصدار تصريح)[cite: 7].
+*   **Sub-node 2.2: Data Entry**
+    *   Action: Select "Ajeer Contract" (عقد أجير) from the options[cite: 7].
+    *   Action: Fill in all the required data regarding the workers and the agreement details[cite: 7].
+
+## Node 3: Hosting Facility Approval (موافقة الطرف الثاني)
+*   **Sub-node 3.1: Second Party Review**
+    *   Action: Once the sponsor submits the data, a request is automatically sent to the manager of the hosting facility (المنشأة المستقطبة) for approval[cite: 7].
+    *   Tip: The hosting facility manager can find this pending request in their "Notifications" (التنبيهات) section[cite: 7].
+
+## Node 4: Payment & Final Issuance (الدفع والإصدار)
+*   **Sub-node 4.1: Fee Settlement**
+    *   Action: After the second party officially approves the request, the workflow moves to the payment stage[cite: 7].
+    *   Action: Pay the required contract fees to finalize and activate the Ajeer contract[cite: 7].
