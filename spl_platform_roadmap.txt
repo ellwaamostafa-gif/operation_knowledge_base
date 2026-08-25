@@ -1,0 +1,18 @@
+# Title: Saudi SPL Platform Roadmap (البريد السعودي - سبل)
+
+## Branch 1: National Address for Companies (العنوان الوطني شركات)
+*   **Description:** The official service to register the national address for businesses, a mandatory requirement for operating in Saudi Arabia.
+*   **Node 1.1: Preparation & Data Verification**
+    *   Action: Before starting, scan the QR Code on the company's Commercial Registration (CR)[cite: 1]. This will display the official phone number and email address linked to the company[cite: 1]. 
+    *   Requirement: You must use these exact details to open the SPL account[cite: 1].
+*   **Node 1.2: Portal Access & User Type Selection**
+    *   Platform: SPL Portal
+    *   Action: Go to the registration page and ensure you select the user type for companies, not individuals[cite: 1].
+    *   Action: Select the "Unified Number" (الرقم الموحد) option and enter the number in the required field[cite: 1]. (Note: The Labor Office Number can also be used as an alternative)[cite: 1].
+*   **Node 1.3: Data Entry & Account Creation**
+    *   Action: Choose the "National Address" option to proceed[cite: 1].
+    *   Action: Fill in the required company data[cite: 1]. This includes entering the verified mobile number, email, username, password, and confirming the password[cite: 1].
+    *   Action: Agree to the privacy policy and terms of use, then click Register[cite: 1].
+*   **Node 1.4: Issuance & Document Download**
+    *   Action: Upon successful registration, an image of the National Address will appear on the screen with a "Download" (تحميل) button above it[cite: 1].
+    *   Output: Click download to obtain the official "Address Proof" (إثبات عنوان) PDF for the company[cite: 1]. This official document includes the Short Address, Building Number, Street, District, Postal Code, and City[cite: 1].

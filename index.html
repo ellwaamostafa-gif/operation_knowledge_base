@@ -108,7 +108,7 @@ const { useState, useEffect, useRef } = React;
 const ACCENT = {
   violet: "#6d47c9", green: "#2f7d5b", teal:  "#12786f", blue:   "#2f5fd0",
   amber:  "#a5701a", red:   "#b0463f", stone: "#4f5a66", pink:   "#9a5a9e",
-  indigo: "#4a5bbf", cyan:  "#0e7490",
+  indigo: "#4a5bbf", cyan:  "#0e7490", orange: "#b45309", rose:  "#be185d",
 };
 const tint = (hex, a) => {
   const n = parseInt(hex.slice(1), 16);
@@ -119,7 +119,8 @@ const tint = (hex, a) => {
 const MS_ICON = {
   GraduationCap: "school", Sprout: "psychiatry", Pill: "medication", Ship: "directions_boat",
   Building2: "apartment", Factory: "factory", Warehouse: "warehouse",
-  Stethoscope: "stethoscope", IdCard: "badge", ShieldCheck: "verified_user",
+  Stethoscope: "stethoscope", IdCard: "badge", ShieldCheck: "verified_user", Store: "store",
+  MapPin: "location_on",
 };
 
 /* ---------- arabic numerals + counts ---------- */
@@ -690,6 +691,128 @@ const ACTIVITIES = [
       ]},
     ],
   },
+
+  {
+    id: "chambers-of-commerce",
+    titleAr: "الغرف التجارية السعودية",
+    descAr: "التسجيل في الغرفة التجارية المختصة — الرياض، جدة والشرقية، أو اتحاد الغرف — خطوة بخطوة.",
+    icon: "Store", accent: "orange",
+    branches: [
+      {
+        id: "riyadh",
+        titleAr: "غرفة الرياض",
+        descAr: "المؤسسة الاقتصادية الرائدة الداعمة للأعمال في العاصمة.",
+        nodes: [
+          { title: "الخطوة ١: تحديث البيانات الأولي (في حال عدم وجود عضوية)", subnodes: [
+            { title: "المستندات المطلوبة",
+              requirements: ["عقد التأسيس", "السجل التجاري", "التأمينات الاجتماعية (GOSI)", "العنوان الوطني"] },
+            { title: "الإجراء",
+              action: "تقديم 'طلب تحديث بيانات' ← 'طلب جديد'. تعبئة بيانات المنشأة والعنوان الوطني ومعلومات مقدم الطلب. رفع المستندات والإرسال، ثم إرسال إيصال التأكيد للعميل.",
+              requirements: [] },
+          ]},
+          { title: "الخطوة ٢: التسجيل في البوابة (بعد الموافقة على الطلب)", subnodes: [
+            { title: "التسجيل في البوابة",
+              platform: "بوابة أعمالي",
+              action: "الدخول إلى البوابة، والنقر على 'مستخدم جديد'، وقبول الشروط، وإدخال رقم العضوية ورقم السجل التجاري.",
+              requirements: [] },
+          ]},
+          { title: "الخطوة ٣: التفعيل والإعداد النهائي", subnodes: [
+            { title: "تفعيل الحساب وإتمام الإعداد",
+              action: "تفعيل الحساب عبر رمز OTP المرسل برسالة نصية. إضافة بيانات ضريبة القيمة المضافة (إن انطبقت). تسجيل الدخول بالبيانات الجديدة لإتمام الإعداد.",
+              requirements: [] },
+          ]},
+        ],
+      },
+      {
+        id: "jeddah-eastern",
+        titleAr: "غرفة جدة والشرقية",
+        descAr: "تشمل غرفتَي جدة (الغرب) والشرقية، وكلتاهما تتبعان الإجراء الإلكتروني ذاته.",
+        nodes: [
+          { title: "الخطوة ١: التحضير والوصول إلى البوابة", subnodes: [
+            { title: "المستندات المطلوبة",
+              requirements: ["الهوية الوطنية", "العقد التأسيسي", "السجل التجاري", "البريد الإلكتروني", "رقم الجوال"] },
+            { title: "اختيار البوابة",
+              platform: "بوابة غرفة جدة أو بوابة غرفة الشرقية",
+              action: "الدخول إلى البوابة الإلكترونية للغرفة المختصة بموقع المنشأة.",
+              requirements: [] },
+          ]},
+          { title: "الخطوة ٢: التسجيل الأولي", subnodes: [
+            { title: "إنشاء الحساب",
+              action: "اختيار 'تسجيل مستخدم جديد'، وقبول الشروط والأحكام، وإدخال رقم العضوية ورقم السجل التجاري.",
+              requirements: [] },
+          ]},
+          { title: "الخطوة ٣: التحقق وتفعيل الشركة", subnodes: [
+            { title: "التحقق من الهوية ورفع المستندات",
+              action: "التحقق من الهوية عبر رمز OTP (نصي/بريد إلكتروني). بعد إنشاء المستخدم بنجاح، تسجيل الدخول مجددًا، وتفعيل ملف الشركة، ورفع المستندات الإلزامية.",
+              requirements: [] },
+          ]},
+        ],
+      },
+      {
+        id: "federation",
+        titleAr: "اتحاد الغرف السعودية",
+        descAr: "البوابة الموحدة لسائر الغرف الإقليمية (مكة، المدينة، القصيم، الطائف، الأحساء، تبوك وغيرها).",
+        nodes: [
+          { title: "الخطوة ١: الوصول واختيار الغرفة", subnodes: [
+            { title: "الدخول والتسجيل",
+              platform: "بوابة اتحاد الغرف التجارية السعودية",
+              action: "النقر على 'تسجيل الدخول'، ثم إعادة التوجيه إلى 'سجّل الآن'. اختيار الغرفة الإقليمية المطابقة لموقع العميل وقبول الشروط.",
+              requirements: [] },
+          ]},
+          { title: "الخطوة ٢: التحقق من الهوية", subnodes: [
+            { title: "إدخال البيانات والتحقق",
+              action: "إدخال رقم الهوية الوطنية أو الإقامة. استرداد رمز OTP المرسل إلى هاتف/بريد العميل وإدخاله للمتابعة.",
+              requirements: [] },
+          ]},
+          { title: "الخطوة ٣: بيانات العضوية والتفعيل النهائي", subnodes: [
+            { title: "إتمام التسجيل وتفعيل الشركة",
+              action: "تعبئة بيانات العضوية التفصيلية. التحقق من رقم الجوال برمز OTP ثانٍ. النقر أخيرًا على 'تفعيل الشركة' لإتمام تسجيل الغرفة.",
+              requirements: [] },
+          ]},
+        ],
+      },
+    ],
+  },
+
+  {
+    id: "spl-platform",
+    titleAr: "منصة سبل (البريد السعودي)",
+    descAr: "الخدمة الرسمية لتسجيل العنوان الوطني للمنشآت، متطلب إلزامي للتشغيل في المملكة العربية السعودية.",
+    icon: "MapPin", accent: "rose",
+    branches: [
+      {
+        id: "national-address",
+        titleAr: "العنوان الوطني للشركات",
+        descAr: "تسجيل العنوان الوطني الرسمي للمنشأة، وهو شرط إلزامي للتسجيل التجاري وجميع التراخيص الحكومية.",
+        nodes: [
+          { title: "الخطوة ١: التحضير والتحقق من البيانات", subnodes: [
+            { title: "مسح رمز QR من السجل التجاري",
+              action: "قبل البدء، امسح رمز QR الموجود على السجل التجاري للشركة. ستظهر بيانات رقم الجوال والبريد الإلكتروني الرسميين المرتبطين بالشركة.",
+              requirements: ["وجوب: يجب استخدام هذه البيانات تحديدًا عند فتح حساب سبل، وإلا رُفض الطلب"] },
+          ]},
+          { title: "الخطوة ٢: الوصول إلى البوابة واختيار نوع المستخدم", subnodes: [
+            { title: "اختيار 'شركات' ليس 'أفراد'",
+              platform: "بوابة سبل SPL",
+              action: "الانتقال إلى صفحة التسجيل، والتأكد من اختيار نوع 'شركات' وليس 'أفراد'. ثم اختيار خيار 'الرقم الموحد' وإدخاله في الحقل المخصص.",
+              requirements: ["بديل: يمكن استخدام 'رقم مكتب العمل' كخيار بديل للرقم الموحد"] },
+          ]},
+          { title: "الخطوة ٣: إدخال البيانات وإنشاء الحساب", subnodes: [
+            { title: "تعبئة بيانات الشركة",
+              action: "اختيار 'العنوان الوطني' من القائمة. تعبئة بيانات الشركة المطلوبة: رقم الجوال المُتحقق منه، والبريد الإلكتروني، واسم المستخدم، وكلمة المرور وتأكيدها.",
+              requirements: [] },
+            { title: "القبول والتسجيل",
+              action: "الموافقة على سياسة الخصوصية وشروط الاستخدام، ثم النقر على 'تسجيل'.",
+              requirements: [] },
+          ]},
+          { title: "الخطوة ٤: إصدار العنوان وتحميل الوثيقة", subnodes: [
+            { title: "تحميل وثيقة إثبات العنوان",
+              action: "بعد التسجيل بنجاح، ستظهر صورة العنوان الوطني مباشرة على الشاشة. انقر 'تحميل' للحصول على وثيقة PDF رسمية 'إثبات عنوان'.",
+              requirements: ["محتويات الوثيقة: العنوان المختصر، رقم المبنى، الشارع، الحي، الرمز البريدي، والمدينة"] },
+          ]},
+        ],
+      },
+    ],
+  },
 ];
 /* ---------- components ---------- */
 
@@ -728,7 +851,7 @@ function Home({ onOpen, onSearch }) {
         دليل تأسيس الأنشطة التجارية في السعودية
       </h1>
       <p style={{ color: "var(--fg-muted)", textAlign: "center", margin: "0 auto 28px", maxWidth: 620, fontSize: 18 }}>
-        خرائط طريق تفصيلية خطوة بخطوة لترخيص وتشغيل عشرة أنشطة تجارية، مع المنصات والإجراءات والمتطلبات لكل مرحلة.
+        خرائط طريق تفصيلية خطوة بخطوة لترخيص وتشغيل اثني عشر نشاطًا تجاريًا، مع المنصات والإجراءات والمتطلبات لكل مرحلة.
       </p>
 
       <button onClick={onSearch} className="tap"
@@ -755,7 +878,9 @@ function Home({ onOpen, onSearch }) {
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ fontWeight: 700, fontSize: 19, lineHeight: 1.25 }}>{act.titleAr}</div>
                 <div style={{ color: "var(--fg-muted)", fontSize: 15.5, marginTop: 5, lineHeight: 1.5 }}>{act.descAr}</div>
-                <div style={{ color: c, fontSize: 14.5, fontWeight: 700, marginTop: 8 }}>{arPhases(act.nodes.length)}</div>
+                <div style={{ color: c, fontSize: 14.5, fontWeight: 700, marginTop: 8 }}>
+                  {act.branches ? arNum(act.branches.length) + " فروع" : arPhases(act.nodes.length)}
+                </div>
               </div>
             </button>
           );
@@ -808,95 +933,166 @@ function SubNodeCard({ sub, color, expert }) {
   );
 }
 
-function Article({ activity, onOpen }) {
-  const c = ACCENT[activity.accent];
-  const [feedback, setFeedback] = useState(null);
-  const related = ACTIVITIES.filter((a) => a.id !== activity.id).slice(0, 2);
+/* ---------- RoadmapTimeline: shared vertical-timeline renderer ---------- */
+function RoadmapTimeline({ nodes, c }) {
   const jump = (i) => {
     const el = document.getElementById("phase-" + i);
     if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 84, behavior: "smooth" });
   };
-
-    return (
-      <div style={{ maxWidth: 860, margin: "0 auto", padding: "34px 22px 80px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 22 }}>
-          <span style={{ width: 64, height: 64, flex: "0 0 auto", borderRadius: 16, background: tint(c, .13),
-                        color: c, display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <Icon name={MS_ICON[activity.icon]} size={38} />
-          </span>
-          <div>
-            <h1 style={{ fontSize: 30, fontWeight: 800, letterSpacing: "-.02em", margin: 0 }}>{activity.titleAr}</h1>
-            <div style={{ color: "var(--fg-muted)", fontSize: 17, marginTop: 2 }}>{arPhases(activity.nodes.length)}</div>
-          </div>
-        </div>
-
-        <div style={{ border: "1px solid var(--border)", borderInlineStart: "5px solid " + c, background: tint(c, .07),
-                      borderRadius: 14, padding: "18px 20px", margin: "0 0 22px", display: "flex", gap: 14,
-                      color: "var(--fg-muted)", fontSize: 17.5, lineHeight: 1.7 }}>
-          <Icon name="lightbulb" size={28} style={{ color: c, flex: "0 0 auto" }} />
-          <div><strong style={{ color: "var(--fg)" }}>باختصار: </strong>{activity.descAr}</div>
-        </div>
-
-        <Links links={activity.links} color={c} />
-
-        {/* phase quick-jump */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, margin: "22px 0 30px" }}>
-          {activity.nodes.map((n, i) => (
-            <button key={i} onClick={() => jump(i)} className="tap"
-                    style={{ padding: "8px 14px", border: "1px solid var(--border)", borderRadius: 999,
-                            background: "var(--surface)", color: "var(--fg-muted)", fontSize: 15, fontWeight: 600 }}>
-              {arNum(i + 1)}. {n.title.replace(/^المرحلة\s+\S+:\s*/, "")}
-            </button>
+  return (
+    <div>
+      {/* phase quick-jump pills */}
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 8, margin: "22px 0 30px" }}>
+        {nodes.map((n, i) => (
+          <button key={i} onClick={() => jump(i)} className="tap"
+                  style={{ padding: "8px 14px", border: "1px solid var(--border)", borderRadius: 999,
+                           background: "var(--surface)", color: "var(--fg-muted)", fontSize: 15, fontWeight: 600 }}>
+            {arNum(i + 1)}. {n.title.replace(/^(المرحلة|الخطوة)\s+\S+:\s*/, "")}
+          </button>
+        ))}
+      </div>
+      {/* vertical timeline */}
+      <div style={{ position: "relative", paddingInlineStart: 30 }}>
+        <div style={{ position: "absolute", top: 8, bottom: 8, insetInlineStart: 8, width: 2, background: tint(c, .3) }}></div>
+        <div style={{ display: "flex", flexDirection: "column", gap: 34 }}>
+          {nodes.map((node, ni) => (
+            <div key={ni} id={"phase-" + ni} style={{ position: "relative", scrollMarginTop: 84 }}>
+              <span style={{ position: "absolute", insetInlineStart: -30, top: 10, width: 18, height: 18,
+                             borderRadius: 999, background: c, border: "3px solid var(--bg)" }}></span>
+              <div style={{ display: "inline-block", color: "#fff", fontWeight: 700, fontSize: 16.5,
+                             borderRadius: 12, padding: "9px 16px", marginBottom: 4, background: c }}>
+                {node.title}
+              </div>
+              <Links links={node.links} color={c} />
+              {node.expert && (
+                <div style={{ display: "inline-flex", alignItems: "center", gap: 8, fontSize: 14, fontWeight: 700,
+                               padding: "5px 13px", borderRadius: 999, background: "#fef3c7", color: "#92400e",
+                               border: "1px solid #f59e0b", marginTop: 6, marginBottom: 2 }}>
+                  <Icon name="star" size={18} style={{ color: "#f59e0b" }} />
+                  نصائح تشغيلية من الخبراء — منع الخسائر
+                </div>
+              )}
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(300px,1fr))", gap: 12, marginTop: 14 }}>
+                {node.subnodes.map((sub, si) => <SubNodeCard key={si} sub={sub} color={c} expert={node.expert} />)}
+              </div>
+            </div>
           ))}
         </div>
+      </div>
+    </div>
+  );
+}
 
-        {/* vertical timeline: connecting line runs down the start (right in RTL) edge */}
-        <div style={{ position: "relative", paddingInlineStart: 30 }}>
-          <div style={{ position: "absolute", top: 8, bottom: 8, insetInlineStart: 8, width: 2, background: tint(c, .3) }}></div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 34 }}>
-            {activity.nodes.map((node, ni) => (
-              <div key={ni} id={"phase-" + ni} style={{ position: "relative", scrollMarginTop: 84 }}>
-                <span style={{ position: "absolute", insetInlineStart: -30, top: 10, width: 18, height: 18,
-                              borderRadius: 999, background: c, border: "3px solid var(--bg)" }}></span>
-                <div style={{ display: "inline-block", color: "#fff", fontWeight: 700, fontSize: 16.5,
-                              borderRadius: 12, padding: "9px 16px", marginBottom: 4, background: c }}>
-                  {node.title}
-                </div>
-                <Links links={node.links} color={c} />
-                {node.expert && (
-                  <div style={{ display: "inline-flex", alignItems: "center", gap: 8, fontSize: 14, fontWeight: 700,
-                                padding: "5px 13px", borderRadius: 999, background: "#fef3c7", color: "#92400e",
-                                border: "1px solid #f59e0b", marginTop: 6, marginBottom: 2 }}>
-                    <Icon name="star" size={18} style={{ color: "#f59e0b" }} />
-                    نصائح تشغيلية من الخبراء — منع الخسائر
-                  </div>
-                )}
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(300px,1fr))", gap: 12, marginTop: 14 }}>
-                  {node.subnodes.map((sub, si) => <SubNodeCard key={si} sub={sub} color={c} expert={node.expert} />)}
-                </div>
-              </div>
-            ))}
+function Article({ activity, onOpen }) {
+  const c = ACCENT[activity.accent];
+  /* branch tab state — only used when activity.branches exists */
+  const [activeBranch, setActiveBranch] = useState(0);
+
+  /* reset branch selection when a different activity is opened */
+  useEffect(() => { setActiveBranch(0); }, [activity.id]);
+
+  const hasBranches = !!activity.branches;
+  const currentNodes = hasBranches
+    ? activity.branches[activeBranch].nodes
+    : activity.nodes;
+  const phaseCount = hasBranches
+    ? activity.branches.reduce((s, b) => s + b.nodes.length, 0)
+    : activity.nodes.length;
+
+  return (
+    <div style={{ maxWidth: 860, margin: "0 auto", padding: "34px 22px 80px" }}>
+      {/* ── header ── */}
+      <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 22 }}>
+        <span style={{ width: 64, height: 64, flex: "0 0 auto", borderRadius: 16, background: tint(c, .13),
+                       color: c, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <Icon name={MS_ICON[activity.icon]} size={38} />
+        </span>
+        <div>
+          <h1 style={{ fontSize: 30, fontWeight: 800, letterSpacing: "-.02em", margin: 0 }}>{activity.titleAr}</h1>
+          <div style={{ color: "var(--fg-muted)", fontSize: 17, marginTop: 2 }}>
+            {hasBranches ? arNum(activity.branches.length) + " فروع" : arPhases(activity.nodes.length)}
           </div>
         </div>
       </div>
-    );
+
+      {/* ── summary banner ── */}
+      <div style={{ border: "1px solid var(--border)", borderInlineStart: "5px solid " + c, background: tint(c, .07),
+                    borderRadius: 14, padding: "18px 20px", margin: "0 0 22px", display: "flex", gap: 14,
+                    color: "var(--fg-muted)", fontSize: 17.5, lineHeight: 1.7 }}>
+        <Icon name="lightbulb" size={28} style={{ color: c, flex: "0 0 auto" }} />
+        <div><strong style={{ color: "var(--fg)" }}>باختصار: </strong>{activity.descAr}</div>
+      </div>
+
+      <Links links={activity.links} color={c} />
+
+      {/* ── branch tabs (only for branched activities) ── */}
+      {hasBranches && (
+        <div style={{ display: "flex", gap: 6, flexWrap: "wrap", margin: "8px 0 6px",
+                      background: tint(c, .07), borderRadius: 16, padding: 6 }}>
+          {activity.branches.map((br, bi) => {
+            const active = bi === activeBranch;
+            return (
+              <button key={br.id} onClick={() => { setActiveBranch(bi); window.scrollTo(0,0); }}
+                      className="tap"
+                      style={{ flex: 1, minWidth: 120, padding: "11px 16px", borderRadius: 12,
+                               border: active ? "2px solid " + c : "2px solid transparent",
+                               background: active ? "#fff" : "transparent",
+                               color: active ? c : "var(--fg-muted)",
+                               fontWeight: 700, fontSize: 15.5,
+                               boxShadow: active ? "0 2px 8px " + tint(c, .18) : "none",
+                               transition: "all .15s" }}>
+                {br.titleAr}
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+      {/* ── branch description strip ── */}
+      {hasBranches && (
+        <div style={{ fontSize: 15.5, color: "var(--fg-muted)", margin: "10px 0 4px",
+                      padding: "10px 16px", background: tint(c, .06), borderRadius: 10,
+                      borderInlineStart: "4px solid " + tint(c, .4) }}>
+          {activity.branches[activeBranch].descAr}
+        </div>
+      )}
+
+      {/* ── roadmap timeline ── */}
+      <RoadmapTimeline nodes={currentNodes} c={c} />
+    </div>
+  );
 }
 
-/* search across activities, phases and sub-nodes */
+/* search across activities, phases and sub-nodes (handles both nodes and branches) */
 function searchAll(q) {
   const s = q.trim();
   if (!s) return [];
   const hit = (t) => !!t && t.indexOf(s) !== -1;
   const out = [];
   ACTIVITIES.forEach((act) => {
-    if (hit(act.titleAr) || hit(act.descAr)) out.push({ act: act, phase: null, title: act.titleAr, sub: act.descAr });
-    act.nodes.forEach((node, ni) => {
-      if (hit(node.title)) out.push({ act: act, phase: ni, title: node.title, sub: act.titleAr });
-      node.subnodes.forEach((sn) => {
-        if (hit(sn.title) || hit(sn.platform) || hit(sn.action) || (sn.requirements || []).some(hit))
-          out.push({ act: act, phase: ni, title: sn.title, sub: act.titleAr + " — " + node.title });
+    if (hit(act.titleAr) || hit(act.descAr)) out.push({ act, phase: null, title: act.titleAr, sub: act.descAr });
+    /* branched activities */
+    if (act.branches) {
+      act.branches.forEach((br) => {
+        if (hit(br.titleAr) || hit(br.descAr)) out.push({ act, phase: null, title: br.titleAr, sub: act.titleAr });
+        br.nodes.forEach((node, ni) => {
+          if (hit(node.title)) out.push({ act, phase: ni, title: node.title, sub: act.titleAr + " — " + br.titleAr });
+          node.subnodes.forEach((sn) => {
+            if (hit(sn.title) || hit(sn.platform) || hit(sn.action) || (sn.requirements || []).some(hit))
+              out.push({ act, phase: ni, title: sn.title, sub: act.titleAr + " / " + br.titleAr + " — " + node.title });
+          });
+        });
       });
-    });
+    } else {
+      /* regular activities */
+      act.nodes.forEach((node, ni) => {
+        if (hit(node.title)) out.push({ act, phase: ni, title: node.title, sub: act.titleAr });
+        node.subnodes.forEach((sn) => {
+          if (hit(sn.title) || hit(sn.platform) || hit(sn.action) || (sn.requirements || []).some(hit))
+            out.push({ act, phase: ni, title: sn.title, sub: act.titleAr + " — " + node.title });
+        });
+      });
+    }
   });
   return out.slice(0, 40);
 }
