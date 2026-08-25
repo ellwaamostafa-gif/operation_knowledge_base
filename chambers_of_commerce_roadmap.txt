@@ -1,0 +1,32 @@
+# Title: Saudi Chambers of Commerce Roadmap (الغرف التجارية)
+
+## Branch 1: Riyadh Chamber (الغرفة التجارية في الرياض)
+*   **Description:** The premier economic institution supporting businesses in the capital.
+*   **Node 1.1: Preliminary Data Update (If No Existing Chamber)**
+    *   Requirements: Articles of Association (عقد تأسيس), CR (سجل تجاري), GOSI/Insurance (تأمينات), National Address (عنوان وطني).
+    *   Action: Submit a "Data Update Request" -> "New Request". Fill facility, national address, and applicant details. Upload documents, submit, and send the confirmation receipt to the client.
+*   **Node 1.2: Portal Registration (After Request Approval)**
+    *   Platform: Aamaly Portal (بوابة أعمالي)
+    *   Action: Access the site, click "New User", accept terms, and enter the Membership Number and CR Number.
+*   **Node 1.3: Activation & Final Setup**
+    *   Action: Activate the account using the OTP sent via SMS. Add VAT details (if applicable to the client). Log in with the new credentials to complete the setup.
+
+## Branch 2: Jeddah & Eastern Province Chambers (غرفة جدة والشرقية)
+*   **Description:** Covers the primary chambers for the Western (Jeddah) and Eastern (Asharqia) business hubs. Both follow the identical electronic process.
+*   **Node 2.1: Preparation & Portal Access**
+    *   Requirements: National ID, Contract, CR, Email, Phone Number.
+    *   Platform: Jeddah Chamber Portal OR Asharqia Chamber Portal.
+*   **Node 2.2: Initial Registration**
+    *   Action: Select "New User Registration" (تسجيل مستخدم جديد), accept terms and conditions, and fill in the Membership Number and CR Number.
+*   **Node 2.3: Verification & Company Activation**
+    *   Action: Verify the identity via an OTP code (SMS/Email). Once the user is successfully created, log back into the client's account, activate the company profile, and upload the mandatory documents.
+
+## Branch 3: Federation of Saudi Chambers (مجمع الغرف التجارية)
+*   **Description:** The unified portal covering all other regional chambers (e.g., Makkah, Madinah, Qassim, Taif, Al-Ahsa, Tabuk).
+*   **Node 3.1: Portal Access & Chamber Selection**
+    *   Platform: Federation of Saudi Chambers Portal.
+    *   Action: Click "Login", then redirect to "Register Now". Choose the specific regional chamber matching the client's location and accept the terms.
+*   **Node 3.2: Identity Verification**
+    *   Action: Enter the National ID / Iqama number. Retrieve the OTP code sent to the client's phone/email and input it to proceed.
+*   **Node 3.3: Membership Data & Final Activation**
+    *   Action: Fill in the detailed membership data. Verify the phone number with a second OTP. Finally, click "Activate Company" (تفعيل الشركة) to successfully finalize the chamber registration.

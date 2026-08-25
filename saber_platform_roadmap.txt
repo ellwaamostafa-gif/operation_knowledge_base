@@ -1,0 +1,42 @@
+# Title: Saudi Saber Platform Roadmap (Product Conformity)
+
+## Node 1: Platform Overview & Account Setup
+*   **Description:** The mandatory government portal for clearing imported goods through Saudi Customs. It ensures product quality and compliance with SASO standards.
+*   **Sub-node 1.1: Account Creation**
+    *   Platform: Saber Portal
+    *   Action: Log in using the establishment's National Unified Access (Nafath) credentials.
+    *   Fee & Timeline: Free of charge (0 SAR) / Instant activation.
+
+## Node 2: Product Categorization & Pathways
+*   **Sub-node 2.1: Determine the HS Code**
+    *   Action: Identify the exact Harmonized System (HS) Code for the product. This dictates which regulatory track the product must follow.
+*   **Sub-node 2.2: Track A (Regulated Products)**
+    *   Target: Consumer electronics, children's toys, clothing, and factory raw materials.
+    *   Action: Requires a Product Certificate (PCoC) evaluated by a lab, followed by a Shipment Certificate (SCoC) per import.
+*   **Sub-node 2.3: Track B (Non-Regulated Products)**
+    *   Target: Simple, low-risk products.
+    *   Action: Skips the lab evaluation. Requires a free "Self-Declaration" (إقرار ذاتي) by the importer, followed by a Shipment Certificate (SCoC).
+
+## Node 3: Product Certificate of Conformity (PCoC)
+*   **Description:** The "Passport" of the product. Issued once a year.
+*   **Sub-node 3.1: Documentation & Submission**
+    *   Requirements: Clear product photos, lab test reports, country of origin, and barcode.
+    *   Action: Upload to Saber and select a Conformity Assessment Body (CAB) like SGS or Intertek for evaluation.
+*   **Sub-node 3.2: Fees & Timeline**
+    *   Fee: 500 SAR (Platform Fee) + CAB/Lab Fees (Approx. 400 - 800 SAR).
+    *   Timeline: 5 to 6 working days. (Valid for 1 Year).
+
+## Node 4: Shipment Certificate of Conformity (SCoC)
+*   **Description:** The "Travel Ticket" for the specific shipment.
+*   **Sub-node 4.1: Documentation & Submission**
+    *   Requirements: Commercial Invoice, Bill of Lading, and Packing List.
+    *   Action: Request the SCoC via Saber for the incoming shipment.
+    *   Fee & Timeline: 350 SAR per shipment / Takes up to 5 days. (Valid for 60 Days).
+
+## Node 5: Expert Operational Tips (Loss Prevention)
+*   **Sub-node 5.1: Proactive Timing (Avoid Demurrage)**
+    *   Tip: Do not wait for the ship to arrive at the Saudi port. Apply for the SCoC while the goods are still in transit (at sea) to avoid heavy port storage fines (أرضيات).
+*   **Sub-node 5.2: HS Code Accuracy**
+    *   Tip: Entering a wrong HS Code is the #1 reason for customs rejection. Always verify it before starting the Saber process.
+*   **Sub-node 5.3: Saber Technical Support**
+    *   Action: For technical glitches or suspended requests, escalate immediately to Saber Support: 920008673 or ecare@saber.sa.
