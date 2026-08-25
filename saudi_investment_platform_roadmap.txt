@@ -1,0 +1,23 @@
+# Title: Saudi Ministry of Investment Platform (منصة وزارة الاستثمار - استثمر في السعودية)
+
+## Node 1: Portal Access & Navigation (الدخول والتنقل)
+*   **Description:** The official gateway for foreign and joint investment services in Saudi Arabia.
+*   **Sub-node 1.1: Dashboard Navigation**
+    *   Platform: Invest Saudi Portal (بوابة استثمر في السعودية).
+    *   Action: After logging in, scroll down to the Investment Registration Information (معلومات تسجيل الاستثمار) section[cite: 8]. 
+    *   Action: Click on the "My Tickets" (تذاكري) tab to manage support requests[cite: 8].
+
+## Node 2: Visa Authorization Request (طلب تفويض تأشيرة)
+*   **Sub-node 2.1: Request Initiation**
+    *   Action: Access the "New Inquiry" (استفسار جديد) form[cite: 8].
+*   **Sub-node 2.2: Data Entry & Documentation**
+    *   Requirement 1 (Subject): Type "تفويض تأشيرة" in the mandatory Subject (الموضوع) field[cite: 8].
+    *   Requirement 2 (Notes): Write a formal message in the Notes (ملاحظاتك) field, such as: "السلام عليكم تحية طيبة نرجو قبول طلب تفويض تأشيرة [اكتب المهنة، مثال: رئيس تنفيذي] ولكم جزيل الشكر"[cite: 8].
+    *   Requirement 3 (Attachments): Upload the company's official Qiwa Visa file (ملف تأشيرة قوى) in PDF format to support the request[cite: 8].
+
+## Node 3: Submission & Tracking (التقديم والمتابعة)
+*   **Sub-node 3.1: Confirmation**
+    *   Action: Submit the inquiry. A success popup will confirm submission and provide a unique Inquiry Reference Number (رقم مرجع الاستفسار) (e.g., 0000204992)[cite: 8].
+*   **Sub-node 3.2: Status Tracking**
+    *   Action: The submitted request will appear in the "My Requests" (طلباتي) section[cite: 8].
+    *   Status: It will be marked as "In Progress" (قيد التنفيذ) until processed by the Ministry[cite: 8].

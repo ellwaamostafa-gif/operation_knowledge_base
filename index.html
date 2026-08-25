@@ -122,6 +122,7 @@ const MS_ICON = {
   Building2: "apartment", Factory: "factory", Warehouse: "warehouse",
   Stethoscope: "stethoscope", IdCard: "badge", ShieldCheck: "verified_user", Store: "store",
   MapPin: "location_on", FlaskConical: "science", Percent: "percent", Handshake: "handshake",
+  TrendingUp: "trending_up",
 };
 
 /* ---------- arabic numerals + counts ---------- */
@@ -984,6 +985,41 @@ const ACTIVITIES = [
       ]},
     ],
   },
+
+  {
+    id: "investment-platform",
+    titleAr: "منصة وزارة الاستثمار",
+    descAr: "البوابة الرسمية لخدمات الاستثمار الأجنبي والمشترك في المملكة (استثمر في السعودية).",
+    links: [{ label: "بوابة استثمر في السعودية", url: "https://investsaudi.sa" }],
+    icon: "TrendingUp", accent: "amber",
+    nodes: [
+      { title: "الخطوة ١: الدخول والتنقل (Portal Access & Navigation)", subnodes: [
+        { title: "التنقل في لوحة المعلومات",
+          platform: "بوابة استثمر في السعودية",
+          action: "بعد تسجيل الدخول، انتقل إلى قسم 'معلومات تسجيل الاستثمار' (Investment Registration Information).",
+          requirements: [] },
+        { title: "إدارة الطلبات",
+          action: "انقر على تبويب 'تذاكري' (My Tickets) لإدارة طلبات الدعم.",
+          requirements: [] },
+      ]},
+      { title: "الخطوة ٢: طلب تفويض تأشيرة (Visa Authorization Request)", subnodes: [
+        { title: "بدء الطلب",
+          action: "الدخول إلى نموذج 'استفسار جديد' (New Inquiry).",
+          requirements: [] },
+        { title: "إدخال البيانات والمستندات",
+          action: "كتابة 'تفويض تأشيرة' في حقل الموضوع (Subject).",
+          requirements: ["حقل الملاحظات: كتابة رسالة رسمية، مثل 'السلام عليكم تحية طيبة نرجو قبول طلب تفويض تأشيرة [اسم المهنة] ولكم جزيل الشكر'", "المرفقات: رفع ملف تأشيرة قوى الرسمي للشركة بصيغة PDF لدعم الطلب"] },
+      ]},
+      { title: "الخطوة ٣: التقديم والمتابعة (Submission & Tracking)", subnodes: [
+        { title: "تأكيد الطلب",
+          action: "تقديم الاستفسار. ستظهر نافذة نجاح تؤكد التقديم وتوفر رقم مرجع الاستفسار (مثل: 0000204992).",
+          requirements: [] },
+        { title: "متابعة الحالة",
+          action: "سيظهر الطلب المقدم في قسم 'طلباتي' (My Requests).",
+          requirements: ["ستكون حالة الطلب 'قيد التنفيذ' (In Progress) حتى تتم معالجته من قبل الوزارة"] },
+      ]},
+    ],
+  },
 ];
 /* ---------- components ---------- */
 
@@ -1022,7 +1058,7 @@ function Home({ onOpen, onSearch }) {
         دليل تأسيس الأنشطة التجارية في السعودية
       </h1>
       <p style={{ color: "var(--fg-muted)", textAlign: "center", margin: "0 auto 28px", maxWidth: 620, fontSize: 18 }}>
-        خرائط طريق تفصيلية خطوة بخطوة لترخيص وتشغيل خمسة عشر نشاطًا تجاريًا، مع المنصات والإجراءات والمتطلبات لكل مرحلة.
+        خرائط طريق تفصيلية خطوة بخطوة لترخيص وتشغيل ستة عشر نشاطًا تجاريًا، مع المنصات والإجراءات والمتطلبات لكل مرحلة.
       </p>
 
       <button onClick={onSearch} className="tap"
