@@ -1,0 +1,31 @@
+# Title: Saudi Local Content Authority Roadmap (هيئة المحتوى المحلي)
+
+## Branch 1: Preparation & Requirements (التجهيز والمتطلبات الأساسية)
+*   **Description:** The preparatory phase for gathering documents and financial data required to calculate and certify the local content percentage.
+*   **Node 1.1: Financial & Legal Documents (المستندات المالية والنظامية)**
+    *   Requirement: Ensure the Commercial Registration is valid and the Chamber of Commerce subscription is renewed[cite: 5]. Update the National Address to avoid application suspension[cite: 5].
+    *   Requirement: Prepare the audited balance sheet for the last fiscal year, ensuring it is officially uploaded to the "Qawaem" platform[cite: 5].
+    *   Requirement: Extract employee names and salaries from GOSI to prove Saudization ratios[cite: 5]. Prepare a fixed asset register for equipment and buildings inside Saudi Arabia[cite: 5]. Compile purchase invoices to differentiate between local and imported suppliers[cite: 5].
+*   **Node 1.2: The Measurement Model (نموذج القياس)**
+    *   Action: Fill out a comprehensive Excel file from LCGPA with all financial figures of the company[cite: 5].
+    *   Validation: The figures in the Excel file must exactly match the financial statements uploaded to "Qawaem", as any discrepancy will cause a rejection[cite: 5].
+    *   Metrics: The model measures spending on workforce (Saudi vs. expats), goods and services (local vs. imported), supplier development, fixed assets depreciation, and R&D[cite: 5].
+    *   Equation: The Local Content percentage is calculated by dividing total local spending by total overall spending, multiplied by 100[cite: 5].
+*   **Node 1.3: Certified Audit Office (مكتب المراجعة المعتمد)**
+    *   Action: Contract an external audit office to review the numbers and issue the mandatory audit report[cite: 5].
+    *   Condition: The audit office must be officially certified and listed in the LCGPA portal's dropdown menu[cite: 5].
+    *   Timeline & Fees: Auditor fees range from 5,000 to 25,000 SAR depending on company size[cite: 5]. File preparation takes 1 to 2 weeks[cite: 5].
+
+## Branch 2: Electronic Submission Workflow (خطوات التقديم الإلكتروني)
+*   **Description:** The official steps to submit the request via the LCGPA e-services portal.
+*   **Node 2.1: Portal Access & Initiation (الدخول للبوابة وبدء الطلب)**
+    *   Platform: Access the LCGPA e-services portal (eservices.lcgpa.gov.sa) using the National Unified Access (Nafath) credentials for the business sector[cite: 6].
+    *   Action: From the dashboard, select "Issue Local Content Certificate" (إصدار شهادة المحتوى المحلي)[cite: 6].
+    *   Action: Select the target fiscal year (e.g., ending Dec 31, 2024, or later) and choose the appropriate request type[cite: 6].
+*   **Node 2.2: Data Entry & Form Submission (تعبئة نماذج الطلب)**
+    *   Action: Choose to fill the forms manually, upload the prepared Excel measurement model, or send the request directly to the audit office[cite: 6].
+    *   Action: If filling manually or uploading, complete the 8 required sections: Company Information, Workforce, Goods and Services, Capital Expenditures, Capacity Development, Depreciation and Amortization, Income Statement Items, and Local Content Evaluation[cite: 6].
+*   **Node 2.3: Auditor Routing & Final Approval (التدقيق والاعتماد النهائي)**
+    *   Action: Submit the request directly through the portal to the chosen certified audit office[cite: 6].
+    *   Tracking: Monitor the request status (e.g., Draft, Sent to Auditor, Completed) via the "My Requests" (طلباتي) menu[cite: 6]. Check the portal daily, as LCGPA may request clarifications, and delays in responding can lead to request cancellation[cite: 5].
+    *   Output: The LCGPA review typically takes 5 to 15 working days after fee payment and file completion[cite: 5]. Once approved, the certificate can be viewed and downloaded directly from the portal[cite: 6].
