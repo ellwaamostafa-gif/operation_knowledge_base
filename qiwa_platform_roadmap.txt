@@ -1,0 +1,25 @@
+# Title: Saudi Qiwa Platform Roadmap (منصة قوى - إدارة المهن)
+
+## Branch 1: Standard Profession Change (تغيير المهن إلكترونياً)
+*   **Description:** The standard electronic process for changing an employee's profession.
+*   **Node 1.1: Platform Access & Navigation**
+    *   Action: Log in via Nafath, select "Business Account" (حساب الأعمال), and choose the specific company.
+    *   Action: Navigate to "Services" (الخدمات) -> "Profession Management" (إدارة المهن) -> "Change Profession" (تغيير المهن) -> "Manage Profession Requests" (إدارة طلبات المهن).
+*   **Node 1.2: Employee Selection & Execution**
+    *   Action: Search for the employee by Name or ID. Select the desired profession and proceed to the next step.
+    *   Operational Tip: If changing to a Higher Profession (e.g., CEO, General Manager) and the system shows "Not Qualified" (غير مؤهل), you must find the exact compatible title. Do this by initiating a "Contract Amendment" request in the Saudi Business Center (SBC), cancelling it, and checking the "Managers" section in the cancelled request to find the officially registered title.
+
+## Branch 2: Manual Change for Higher Professions (التعديل اليدوي للمهن العليا)
+*   **Description:** The physical fallback process required when electronic systems fail to sync higher management professions (General Manager, Executive Director, Chairman of the Board)[cite: 9].
+*   **Node 2.1: Operational Pre-requisites**
+    *   Condition: The facility's Nitaqat MUST be Green.
+    *   Condition: The facility must actively employ a Saudi national and an account manager.
+*   **Node 2.2: Document Preparation (تجهيز الملف)**
+    *   Form: A physically filled and company-stamped "Higher Profession Change Request Form" containing the establishment, expatriate, and applicant details[cite: 9].
+    *   Official Letters: Two formal letters attested by the Chamber of Commerce; one directed to the Ministry of Investment, and another to HRSD[cite: 9].
+    *   Legal Docs: Copy of the Commercial Registration (CR), Investment License, Articles of Association, and the expatriate's Iqama[cite: 9].
+    *   SBC Docs: A printed CR extract clearly showing the company managers with a barcode, and a partner printout (if partners exist)[cite: 9].
+    *   Supporting Docs: A screenshot of the technical error from Qiwa[cite: 9] and a labor printout (برينت العمل).
+*   **Node 2.3: Submission & Tracking**
+    *   Action: Submit the complete dossier physically to the Saudi Business Center (SBC) / HRSD. (An agency/power of attorney can be utilized as a premium service).
+    *   Action: Track the manual request. The change is considered officially complete only when the new profession reflects on the "Muqeem" platform[cite: 9].

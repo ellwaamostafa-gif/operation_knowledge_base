@@ -1,0 +1,44 @@
+# Title: Saudi Visas & Authorizations Roadmap (إصدار وتفويض التأشيرات)
+
+## Branch 1: Qiwa Permanent Work Visa (تأشيرة العمل الدائمة - قوى)
+*   **Description:** Process for issuing instant permanent work visas via the Qiwa platform.
+*   **Node 1.1: Service Selection**
+    *   Platform: Qiwa Portal
+    *   Action: Navigate to "Instant Work Visas" (تأشيرات العمل الفورية)[cite: 10].
+    *   Action: Under the "Permanent Work Visas" (تأشيرات العمل الدائمة) section, click on "Issue Visa" (إصدار التأشيرة)[cite: 10].
+*   **Node 1.2: Visa Details Entry**
+    *   Action: Define the required visa details including the candidate's Nationality, Profession, and Embassy location[cite: 10].
+*   **Node 1.3: Summary & Payment**
+    *   Action: Review the added visas and click "Go to Summary" (الذهاب إلى الملخص) to proceed to the checkout stage[cite: 10].
+*   **Node 1.4: Printing & Finalization**
+    *   Action: Complete the payment. A confirmation screen displaying "شكراً لك" (Thank you) will appear[cite: 10].
+    *   Action: The visa is now officially issued. Click "Print Request Details" (طباعة تفاصيل الطلب) to download the document[cite: 10].
+
+## Branch 2: Ministry of Investment Visa (تأشيرة وزارة الاستثمار)
+*   **Description:** Process for requesting a visa manually through the Invest Saudi portal for foreign/joint investment entities.
+*   **Node 2.1: Requirements Preparation**
+    *   Documents Needed: Commercial Registration (السجل التجاري), Contract (العقد), Passport (جواز السفر), and Visa shipping transfer document (تحويلة شحن التأشيرة)[cite: 11].
+*   **Node 2.2: Portal Navigation**
+    *   Platform: Invest Saudi Portal
+    *   Action: Log in to the client's account[cite: 11].
+    *   Action: Click on "My Tickets" (تذاكري), then select "View All" (عرض الكل)[cite: 11].
+*   **Node 2.3: Inquiry Creation & Submission**
+    *   Action: Create a new inquiry and explicitly write "اصدار تأشيرة" (Issue Visa) in the Subject field[cite: 11].
+    *   Data Entry: In the notes section, you must provide: 1. Name, 2. Religion, 3. Gender, 4. Profession, 5. Passport Number, 6. HRSD Establishment Number[cite: 11].
+    *   Action: Upload the required attachments listed in the prerequisites, then click "Create Inquiry" (إنشاء استفسار)[cite: 11].
+    *   Output: The request is successfully submitted to the Ministry and will be processed and replied to through the platform[cite: 11].
+
+## Branch 3: MOFA Visa Authorization (التفويض على تأشيرة - الخارجية)
+*   **Description:** Authorizing a recruitment agency abroad to process the issued visa.
+*   **Node 3.1: Authorization Initiation**
+    *   Platform: MOFA Enjaz / Visa Platform
+    *   Action: Select "Visa Authorization" (التفويض على تأشيرة) from the menu[cite: 12].
+    *   Action: Locate the target profession from the generated list and click "Add Authorization" (إضافة تفويض) under the Actions column[cite: 12].
+*   **Node 3.2: Agency Data Entry**
+    *   Action: Enter the number of persons as specified in the Qiwa visa details file[cite: 12].
+    *   Warning: You MUST accurately type the Authorized Agency Name (اسم المكتب المفوض) exactly as registered, including any brackets or special characters, without omitting a single letter[cite: 12].
+*   **Node 3.3: Payment & Printing**
+    *   Action: Enter credit card details and the confirmation code to process the payment[cite: 12].
+    *   Action: Once the green "Payment Successful" (عملية الدفع ناجحة) message appears, click the "Return" (عودة) button at the bottom left[cite: 12].
+    *   Action: Scroll down to the "Requested Authorizations" (طلبات التفاويض المطلوبة) section, locate your successful request, and click "Print" (طباعة)[cite: 12].
+    *   Output: The authorization is now fully processed and ready as a PDF file[cite: 12].
