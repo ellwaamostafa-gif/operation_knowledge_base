@@ -1,0 +1,22 @@
+# Title: Saudi ZATCA Platform Roadmap (هيئة الزكاة والضريبة والجمارك)
+
+## Branch 1: VAT Registration (التسجيل في ضريبة القيمة المضافة)
+*   **Description:** The official process to register a company for Value Added Tax (VAT) and obtain the tax certificate.
+*   **Node 1.1: Portal Access (الدخول للخدمات العامة)**
+    *   Platform: ZATCA Portal.
+    *   Action: From the main dashboard, go to General Services (الخدمات العامة) and select "VAT Registration" (التسجيل في ضريبة القيمة المضافة)[cite: 17].
+*   **Node 1.2: Taxpayer Details & Operational Tip (تفاصيل المكلف)**
+    *   Action: Enter address details (City, Neighborhood, Street) and select the portal as the source[cite: 17].
+    *   Action: Answer the questions "Are you an importer?" (هل أنت مستورد؟) and "Are you an exporter?" (هل أنت مصدر؟)[cite: 17].
+    *   Operational Tip: If the targeted amount is around 30,000 SAR or more, answer "Yes" (نعم) to both. If the amount is lower (e.g., around 8,000 SAR), answer "No" (لا)[cite: 17].
+*   **Node 1.3: Financial Information (المعلومات المالية)**
+    *   Action: Answer questions regarding expected and past supplies and expenses for the 12-month periods[cite: 17].
+    *   Operational Tip (For Acceptance): To ensure the VAT registration is accepted, select "More than" (أكثر) for the first question, and "Less than" (أقل) for the remaining financial questions[cite: 17].
+    *   Action: Upload the mandatory attachments to prove eligibility, such as an official contract (عقد رسمي)[cite: 17].
+*   **Node 1.4: Financial Representative & Submission (الممثل المالي والتعهد)**
+    *   Action: Skip the "Financial Representative" (الممثل المالي) section as it is optional and should be left blank[cite: 17].
+    *   Action: Acknowledge the legal declaration in the "Pledge" (التعهد) section to submit the application[cite: 17]. 
+    *   Output: A receipt acknowledgment (إشعار استلام) will appear containing the company name, request number, and date[cite: 17].
+*   **Node 1.5: Tracking & Certificate Issuance (المراسلات والشهادة)**
+    *   Tracking: Check the "Correspondence" (المراسلات) tab; a new notification indicates the process was completed successfully[cite: 17].
+    *   Output: Once approved, the official VAT Registration Certificate is issued here, containing the VAT Registration Number, Effective Date, Tax Period (e.g., Quarterly), and the due date for the first tax filing[cite: 17].

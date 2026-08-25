@@ -1,0 +1,25 @@
+# Title: Saudi Compliance & Renewal Alerts (جدول التنبيهات والمتابعة الدورية)
+
+## Branch 1: Commercial Registration (تجديد السجل التجاري والرخص)
+*   **Description:** Tracking the annual renewal of the Commercial Registration (CR) to maintain legal compliance.
+*   **Node 1.1: Document Retrieval**
+    *   Action: Search the client database (e.g., Google Drive) using the company name or number.
+    *   Action: Locate and open the official Commercial Registration Certificate (شهادة السجل التجاري).
+*   **Node 1.2: Date Calculation & Alerts**
+    *   Action: Extract the "Issue Date" (تاريخ الإصدار) from the document. The Expiry Date is exactly one year later.
+    *   Alert Rule: Log the data into the Alerts Table and set the "Alert Date" (تاريخ التنبيه) at least 1 month before the expiry date.
+
+## Branch 2: Iqama & Visas (الإقامات وتأشيرات الخروج والعودة)
+*   **Description:** Monitoring expatriate legal documents to prevent fines and travel bans.
+*   **Node 2.1: Iqama Renewal (تجديد الإقامة)**
+    *   Rule: Iqamas can be renewed for durations of 3, 6, 9, or 12 months.
+    *   Alert Rule: Check the Iqama expiry date and set the alert exactly 1 month before expiration.
+*   **Node 2.2: Exit/Re-entry Visas (تأشيرات الخروج والعودة)**
+    *   Warning: If the visa expires while the employee is outside Saudi Arabia, they face strict return bans and the company faces fines.
+    *   Alert Rule: Set the alert strictly 10 to 15 days before the visa expires to take immediate action (extend or ensure return).
+
+## Branch 3: Platform Subscriptions (اشتراكات المنصات - قوى ومقيم)
+*   **Description:** Tracking the annual subscription cycles for essential government platforms like Qiwa and Muqeem.
+*   **Node 3.1: Data Verification**
+    *   Action: Subscription dates cannot always be found in standard documents. You must log in directly to the client's account on the specific portal (Qiwa/Muqeem).
+    *   Action: Find the initial subscription activation date. Log this into the Alerts Table and set the renewal alert for one year from that exact date.
