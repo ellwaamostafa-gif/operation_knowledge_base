@@ -1,0 +1,27 @@
+# Title: Saudi GOSI Platform Roadmap (المؤسسة العامة للتأمينات الاجتماعية)
+
+## Branch 1: Add Branch Manager / Open Account (إضافة مدير فرع - فتح حساب)
+*   **Description:** The process of activating the GOSI account by adding a branch manager without needing prior login[cite: 16].
+*   **Node 1.1: Prerequisites & Documents (المتطلبات والمستندات)**
+    *   Requirements: Iqama (إقامة), GOSI Establishment Number (رقم المنشأة في التأمينات - obtained from the Saudi Business Center), Commercial Registration (السجل التجاري), Articles of Association/Contract (العقد), and a formal GOSI letter attested by the Chamber of Commerce[cite: 16].
+*   **Node 1.2: Portal Access (الدخول للبوابة)**
+    *   Platform: GOSI Portal
+    *   Action: Without logging in, hover over "Services" (خدمات), select "Business Services" (خدمات الأعمال), then choose "Manage/Add Branch Account Manager" (إدارة مدير حساب الفروع / أضف مدير حساب الفروع), and click "Start Service" (ابدأ الخدمة)[cite: 16].
+*   **Node 1.3: Data Entry & Verification (إدخال البيانات والتحقق)**
+    *   Action: Fill in the Nationality, National ID/Iqama, Date of Birth (Gregorian), and the Main Establishment Subscription Number (رقم اشتراك المنشأة الرئيسية)[cite: 16].
+    *   Action: Enter the verification code (رمز التحقق) and click "Verify" (تحقق)[cite: 16]. This will trigger an Absher OTP code to the client's mobile phone[cite: 16].
+*   **Node 1.4: Document Upload & Finalization (رفع المستندات والاعتماد)**
+    *   Action: Move to the "Documents" (المستندات) section and upload the CR, Contract, and the Attested Letter[cite: 16].
+    *   Timeline: The request takes 24 working hours to be processed, after which the GOSI account will be successfully opened[cite: 16].
+
+## Branch 2: Change Branch Manager (تغيير مدير فرع)
+*   **Description:** The procedure to change the existing manager of an already active GOSI account[cite: 15].
+*   **Node 2.1: Login (تسجيل الدخول)**
+    *   Action: Log into the GOSI portal via Nafath (نفاذ) using the credentials of the *current* manager[cite: 15].
+*   **Node 2.2: System Navigation (التنقل في النظام)**
+    *   Action: Go to "Establishment Services" (خدمات المنشأة), then "Establishment Management" (إدارة المنشأة)[cite: 15].
+    *   Action: Select "Manage Establishment Supervisors" (إدارة مشرفي المنشأة)[cite: 15].
+*   **Node 2.3: Execution & Updating Data (التنفيذ وتحديث البيانات)**
+    *   Action: From the "Actions" (الإجراءات) drop-down menu, select "Change Supervisor" (تغيير المشرف)[cite: 15].
+    *   Action: Enter the new supervisor's details and click "Verify" (تحقق)[cite: 15].
+    *   Action: Once the person's name and details appear, complete their missing information (Mobile Number and Email), then click "Save and Continue" (حفظ ومتابعة) to successfully finalize the change[cite: 15].
